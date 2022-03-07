@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quera">
         <activity
-            android:name=".SignupActivity"
+            android:name=".ui.login_signup.SignupActivity"
             android:exported="false"
             android:label="@string/signup_activity_label" />
         <activity
