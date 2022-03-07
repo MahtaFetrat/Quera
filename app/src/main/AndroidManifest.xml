@@ -11,8 +11,7 @@
         android:theme="@style/Theme.Quera">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/login_activity_label">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
