@@ -12,6 +12,9 @@
     <string name="instructor_signup_tab">Instructor</string>
     <string name="signup_suggestion">Don\'t have an account? Sign up</string>
     <string name="login_suggestion">Already got an account? Log in</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="firstname_hint">First Name</string>
+    <string name="lastname_hint">Last Name</string>
+    <string name="university_hint">University Name</string>
+    <string name="student_number_hint">Student Number</string>
+    <string name="password_repeat_hint">Repeat Password</string>
 </resources>
