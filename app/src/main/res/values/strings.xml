@@ -4,4 +4,5 @@
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="login_activity_label">Log in to your account</string>
+    <string name="signup_suggestion">Don\'t have an account? Sign up</string>
 </resources>
