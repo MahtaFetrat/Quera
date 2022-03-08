@@ -60,10 +60,11 @@
 
         <Button
             android:id="@+id/signup_suggestion"
+            style="@style/link_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/signup_suggestion"
-            style="@style/link_button"/>
+            android:onClick="navToSignupActivity"
+            android:text="@string/signup_suggestion" />
     </LinearLayout>
 </ScrollView>

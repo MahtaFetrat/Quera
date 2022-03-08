@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="50dp">
+        android:paddingHorizontal="50dp"
+        android:paddingBottom="50dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -18,10 +19,11 @@
             android:layout_marginHorizontal="50dp"
             android:layout_marginVertical="50dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/text_logo"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/text_logo" />
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/signupTabLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -39,6 +41,7 @@
         </com.google.android.material.tabs.TabLayout>
 
         <FrameLayout
+            android:id="@+id/signupTabFragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -51,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="navToLoginForm"
             android:text="@string/login_suggestion" />
     </LinearLayout>
 </ScrollView>
