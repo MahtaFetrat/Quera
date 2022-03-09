@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.quera.model.DataHandler;
 import com.example.quera.ui.login_signup.LoginFragment;
 import com.example.quera.ui.login_signup.SignupActivity;
 
 public class MainActivity extends AppCompatActivity {
+    public static DataHandler dataHandler = new DataHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

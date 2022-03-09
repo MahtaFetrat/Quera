@@ -9,9 +9,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1" >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupInstructorUsernameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -26,6 +27,7 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupInstructorFirstNameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -40,6 +42,7 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupInstructorLastNameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -54,6 +57,7 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupInstructorUniversityNameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -68,11 +72,13 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupInstructorPasswordField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
+            android:maxLength="16"
             tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -83,17 +89,19 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signupInstructorPasswordRepeatField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:hint="@string/password_repeat_hint"
             android:inputType="textPassword"
+            android:maxLength="16"
             tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/instructor_signup"
+        android:id="@+id/instructorSignupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
