@@ -23,4 +23,8 @@
     <string name="password_repeat_error">Password and its repetition don\'t match</string>
     <string name="required_error">Please fill in all the fields</string>
     <string name="fix_errors">Please fix the errors above</string>
+    <string name="error_signing_up">Signup failed, please try a few moments later</string>
+    <string name="error_loging_up">Login failed, please try a few moments later</string>
+    <string name="successful_login">Successfully logged in</string>
+    <string name="successful_signup">Successfully signed up</string>
 </resources>

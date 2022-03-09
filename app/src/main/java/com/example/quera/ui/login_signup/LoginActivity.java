@@ -2,6 +2,7 @@ package com.example.quera.ui.login_signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,9 +11,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -62,7 +65,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        // instructor signup stuff and redirection
+        User user = MainActivity.dataHandler.login(usernameField.getText().toString(), passwordField.getText().toString());
+        if (user != null) {
+            Toast.makeText(this, R.string.successful_login, Toast.LENGTH_SHORT).show();
+            setResult(Activity.RESULT_OK);
+            finish();
+        } else {
+            Toast.makeText(this, R.string.error_loging_up, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void navToSignupActivity(View view) {
