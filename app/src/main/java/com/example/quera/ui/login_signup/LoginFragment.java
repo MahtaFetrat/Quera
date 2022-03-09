@@ -4,66 +4,81 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ScrollView;
 
 import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.google.android.material.textfield.TextInputEditText;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LoginFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextInputEditText usernameField;
+    private TextInputEditText passwordField;
+    private Button loginButton;
+    private ScrollView view;
 
     public LoginFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
         ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.login_fragment_label);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = (ScrollView) inflater.inflate(R.layout.fragment_login, container, false);
+
+        findViews();
+        setFromValidator();
+        setLoginButtonOnClick();
+
+        return view;
+    }
+
+    private void findViews() {
+        usernameField = view.findViewById(R.id.loginUsernameField);
+        passwordField = view.findViewById(R.id.loginPasswordField);
+        loginButton = view.findViewById(R.id.loginButton);
+    }
+
+    private void setFromValidator() {
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!MainActivity.dataHandler.isUsernameAvailable(usernameField.getText().toString())) {
+                    usernameField.setError(getString(R.string.invalid_username_error));
+                    loginButton.setEnabled(false);
+                } else {
+                    loginButton.setEnabled(!hasEmptyRequiredFields());
+                }
+            }
+        };
+        usernameField.addTextChangedListener(textWatcher);
+        passwordField.addTextChangedListener(textWatcher);
+    }
+
+    private boolean hasEmptyRequiredFields() {
+        return TextUtils.isEmpty(usernameField.getText()) || TextUtils.isEmpty(passwordField.getText());
+    }
+
+    private void setLoginButtonOnClick() {
+        loginButton.setOnClickListener(view -> {
+            // instructor signup stuff and redirection
+        });
     }
 }

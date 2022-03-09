@@ -17,4 +17,10 @@
     <string name="university_hint">University Name</string>
     <string name="student_number_hint">Student Number</string>
     <string name="password_repeat_hint">Repeat Password</string>
+    <string name="invalid_username_error">Not a valid username</string>
+    <string name="invalid_password_error">Password must be at least 8 characters</string>
+    <string name="username_taken_error">This username is taken</string>
+    <string name="password_repeat_error">Password and its repetition don\'t match</string>
+    <string name="required_error">Please fill in all the fields</string>
+    <string name="fix_errors">Please fix the errors above</string>
 </resources>

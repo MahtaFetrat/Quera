@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="50dp">
+        android:paddingHorizontal="50dp"
+        android:paddingBottom="50dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -18,8 +19,8 @@
             android:layout_marginHorizontal="50dp"
             android:layout_marginVertical="50dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/text_logo"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/text_logo" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -27,6 +28,7 @@
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginUsernameField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
@@ -41,29 +43,33 @@
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
+                android:maxLength="16"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
+            android:enabled="false"
             android:text="@string/login_button"
             tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/signup_suggestion"
+            style="@style/link_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/signup_suggestion"
-            style="@style/link_button"/>
+            android:onClick="navToSignupActivity"
+            android:text="@string/signup_suggestion" />
     </LinearLayout>
 </ScrollView>

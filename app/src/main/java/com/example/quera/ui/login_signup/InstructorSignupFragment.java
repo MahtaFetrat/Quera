@@ -4,63 +4,112 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.utils.Validator;
+import com.google.android.material.textfield.TextInputEditText;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InstructorSignupFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class InstructorSignupFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TextInputEditText usernameField;
+    private TextInputEditText firstName;
+    private TextInputEditText lastName;
+    private TextInputEditText universityName;
+    private TextInputEditText passwordField;
+    private TextInputEditText passwordRepeatField;
+    private Button signupButton;
+    private LinearLayout layout;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private boolean isFormValid = false;
 
     public InstructorSignupFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment InstructorSignupFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static InstructorSignupFragment newInstance(String param1, String param2) {
-        InstructorSignupFragment fragment = new InstructorSignupFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_instructor_signup, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        layout = (LinearLayout) inflater.inflate(R.layout.fragment_instructor_signup, container, false);
+
+        findViews();
+        setFromValidators();
+        setSignupButtonOnClick();
+
+        return layout;
+    }
+
+    private void findViews() {
+        usernameField = layout.findViewById(R.id.signupInstructorUsernameField);
+        firstName = layout.findViewById(R.id.signupInstructorFirstNameField);
+        lastName = layout.findViewById(R.id.signupInstructorLastNameField);
+        universityName = layout.findViewById(R.id.signupInstructorUniversityNameField);
+        passwordField = layout.findViewById(R.id.signupInstructorPasswordField);
+        passwordRepeatField = layout.findViewById(R.id.signupInstructorPasswordRepeatField);
+        signupButton = layout.findViewById(R.id.instructorSignupButton);
+    }
+
+    private void setFromValidators() {
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                isFormValid = false;
+                if (MainActivity.dataHandler.isUsernameAvailable(usernameField.getText().toString())
+                        && !TextUtils.isEmpty(usernameField.getText())) {
+                    usernameField.setError(getString(R.string.username_taken_error));
+                } else if (Validator.isPasswordInvalid(passwordField.getText().toString())
+                        && !TextUtils.isEmpty(passwordField.getText())) {
+                    passwordField.setError(getString(R.string.invalid_password_error));
+                } else if (Validator.passwordsMismatch(passwordField.getText().toString(), passwordRepeatField.getText().toString())
+                        && !TextUtils.isEmpty(passwordRepeatField.getText())) {
+                    passwordRepeatField.setError(getString(R.string.password_repeat_error));
+                } else {
+                    isFormValid = true;
+                }
+            }
+        };
+        usernameField.addTextChangedListener(textWatcher);
+        passwordField.addTextChangedListener(textWatcher);
+        passwordRepeatField.addTextChangedListener(textWatcher);
+    }
+
+    private boolean hasEmptyRequiredFields() {
+        return  TextUtils.isEmpty(usernameField.getText()) ||
+                TextUtils.isEmpty(firstName.getText()) ||
+                TextUtils.isEmpty(lastName.getText()) ||
+                TextUtils.isEmpty(universityName.getText()) ||
+                TextUtils.isEmpty(passwordField.getText()) ||
+                TextUtils.isEmpty(passwordRepeatField.getText());
+    }
+
+    private void setSignupButtonOnClick() {
+        signupButton.setOnClickListener(view -> {
+            if (!isFormValid) {
+                Toast.makeText(getActivity(), R.string.fix_errors, Toast.LENGTH_SHORT).show();
+            } else if (hasEmptyRequiredFields()) {
+                Toast.makeText(getActivity(), R.string.required_error, Toast.LENGTH_SHORT).show();
+            } else {
+                // instructor signup stuff and redirection
+            }
+        });
     }
 }
