@@ -1,15 +1,13 @@
 package com.example.quera.ui.login_signup;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
 
@@ -17,37 +15,24 @@ import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class LoginFragment extends Fragment {
+public class LoginActivity extends AppCompatActivity {
     private TextInputEditText usernameField;
     private TextInputEditText passwordField;
     private Button loginButton;
-    private ScrollView view;
-
-    public LoginFragment() {
-        // Required empty public constructor
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.login_fragment_label);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = (ScrollView) inflater.inflate(R.layout.fragment_login, container, false);
+        setContentView(R.layout.activity_login);
 
         findViews();
         setFromValidator();
-        setLoginButtonOnClick();
-
-        return view;
     }
 
     private void findViews() {
-        usernameField = view.findViewById(R.id.loginUsernameField);
-        passwordField = view.findViewById(R.id.loginPasswordField);
-        loginButton = view.findViewById(R.id.loginButton);
+        usernameField = findViewById(R.id.loginUsernameField);
+        passwordField = findViewById(R.id.loginPasswordField);
+        loginButton = findViewById(R.id.loginButton);
     }
 
     private void setFromValidator() {
@@ -76,9 +61,12 @@ public class LoginFragment extends Fragment {
         return TextUtils.isEmpty(usernameField.getText()) || TextUtils.isEmpty(passwordField.getText());
     }
 
-    private void setLoginButtonOnClick() {
-        loginButton.setOnClickListener(view -> {
-            // instructor signup stuff and redirection
-        });
+    public void login(View view) {
+        // instructor signup stuff and redirection
+    }
+
+    public void navToSignupActivity(View view) {
+        startActivity(new Intent(this, SignupActivity.class));
+        finish();
     }
 }

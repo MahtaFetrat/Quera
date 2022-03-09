@@ -6,7 +6,7 @@
     <string name="instructor_signup_button">Signup as instructor</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="login_fragment_label">Log in to your account</string>
+    <string name="login_activity_label">Log in to your account</string>
     <string name="signup_activity_label">Create new account</string>
     <string name="student_signup_tab">Student</string>
     <string name="instructor_signup_tab">Instructor</string>
