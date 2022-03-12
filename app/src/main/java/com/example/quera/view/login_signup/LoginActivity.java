@@ -1,4 +1,4 @@
-package com.example.quera.ui.login_signup;
+package com.example.quera.view.login_signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.quera.MainActivity;
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!MainActivity.dataHandler.isUsernameAvailable(usernameField.getText().toString())) {
+                if (!MainActivity.dataController.isUsernameAvailable(usernameField.getText().toString())) {
                     usernameField.setError(getString(R.string.invalid_username_error));
                     loginButton.setEnabled(false);
                 } else {
@@ -65,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        User user = MainActivity.dataHandler.login(usernameField.getText().toString(), passwordField.getText().toString());
+        User user = MainActivity.dataController.login(usernameField.getText().toString(), passwordField.getText().toString());
         if (user != null) {
             Toast.makeText(this, R.string.successful_login, Toast.LENGTH_SHORT).show();
             setResult(Activity.RESULT_OK);

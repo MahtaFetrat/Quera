@@ -1,4 +1,4 @@
-package com.example.quera.ui.login_signup;
+package com.example.quera.view.login_signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

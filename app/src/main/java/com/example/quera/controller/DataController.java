@@ -6,7 +6,7 @@ import com.example.quera.model.User;
 
 import java.util.HashMap;
 
-public class DataHandler {
+public class DataController {
     private User currentUser;
     private HashMap<String, User> allUsers = new HashMap<>();
 

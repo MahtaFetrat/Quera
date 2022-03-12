@@ -1,4 +1,4 @@
-package com.example.quera.ui.login_signup;
+package com.example.quera.view.login_signup;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,16 +17,17 @@ import android.widget.Toast;
 
 import com.example.quera.MainActivity;
 import com.example.quera.R;
-import com.example.quera.model.Professor;
+import com.example.quera.model.Student;
 import com.example.quera.utils.Validator;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class InstructorSignupFragment extends Fragment {
+
+public class StudentSignupFragment extends Fragment {
 
     private TextInputEditText usernameField;
     private TextInputEditText firstNameField;
     private TextInputEditText lastNameField;
-    private TextInputEditText universityNameField;
+    private TextInputEditText studentNumberField;
     private TextInputEditText passwordField;
     private TextInputEditText passwordRepeatField;
     private Button signupButton;
@@ -34,18 +35,16 @@ public class InstructorSignupFragment extends Fragment {
 
     private boolean isFormValid = false;
 
-    public InstructorSignupFragment() {
+    public StudentSignupFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        layout = (LinearLayout) inflater.inflate(R.layout.fragment_instructor_signup, container, false);
+        layout = (LinearLayout) inflater.inflate(R.layout.fragment_student_signup, container, false);
 
         findViews();
         setFromValidators();
@@ -55,13 +54,13 @@ public class InstructorSignupFragment extends Fragment {
     }
 
     private void findViews() {
-        usernameField = layout.findViewById(R.id.signupInstructorUsernameField);
-        firstNameField = layout.findViewById(R.id.signupInstructorFirstNameField);
-        lastNameField = layout.findViewById(R.id.signupInstructorLastNameField);
-        universityNameField = layout.findViewById(R.id.signupInstructorUniversityNameField);
-        passwordField = layout.findViewById(R.id.signupInstructorPasswordField);
-        passwordRepeatField = layout.findViewById(R.id.signupInstructorPasswordRepeatField);
-        signupButton = layout.findViewById(R.id.instructorSignupButton);
+        usernameField = layout.findViewById(R.id.signupStudentUsernameField);
+        firstNameField = layout.findViewById(R.id.signupStudentFirstNameField);
+        lastNameField = layout.findViewById(R.id.signupStudentLastNameField);
+        studentNumberField = layout.findViewById(R.id.signupStudentNumberField);
+        passwordField = layout.findViewById(R.id.signupStudentPasswordField);
+        passwordRepeatField = layout.findViewById(R.id.signupStudentPasswordRepeatField);
+        signupButton = layout.findViewById(R.id.studentSignupButton);
     }
 
     private void setFromValidators() {
@@ -75,7 +74,7 @@ public class InstructorSignupFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 isFormValid = false;
-                if (MainActivity.dataHandler.isUsernameAvailable(usernameField.getText().toString())
+                if (MainActivity.dataController.isUsernameAvailable(usernameField.getText().toString())
                         && !TextUtils.isEmpty(usernameField.getText())) {
                     usernameField.setError(getString(R.string.username_taken_error));
                 } else if (Validator.isPasswordInvalid(passwordField.getText().toString())
@@ -98,7 +97,7 @@ public class InstructorSignupFragment extends Fragment {
         return  TextUtils.isEmpty(usernameField.getText()) ||
                 TextUtils.isEmpty(firstNameField.getText()) ||
                 TextUtils.isEmpty(lastNameField.getText()) ||
-                TextUtils.isEmpty(universityNameField.getText()) ||
+                TextUtils.isEmpty(studentNumberField.getText()) ||
                 TextUtils.isEmpty(passwordField.getText()) ||
                 TextUtils.isEmpty(passwordRepeatField.getText());
     }
@@ -110,10 +109,10 @@ public class InstructorSignupFragment extends Fragment {
             } else if (hasEmptyRequiredFields()) {
                 Toast.makeText(getActivity(), R.string.required_error, Toast.LENGTH_SHORT).show();
             } else {
-                Professor professor = MainActivity.dataHandler.signupInstructor(usernameField.getText().toString(),
+                Student student = MainActivity.dataController.signupStudent(usernameField.getText().toString(),
                         passwordField.getText().toString(), firstNameField.getText().toString(),
-                        lastNameField.getText().toString(), universityNameField.getText().toString());
-                if (professor != null) {
+                        lastNameField.getText().toString(), studentNumberField.getText().toString());
+                if (student != null) {
                     Toast.makeText(getActivity(), R.string.successful_signup, Toast.LENGTH_SHORT).show();
                     getActivity().setResult(Activity.RESULT_OK);
                     getActivity().finish();
