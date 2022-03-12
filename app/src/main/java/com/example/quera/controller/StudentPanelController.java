@@ -1,7 +1,7 @@
-package controll;
+package com.example.quera.controller;
 
-import module.Student;
-import module.Class;
+import com.example.quera.model.Student;
+import com.example.quera.model.Class;
 
 import java.util.ArrayList;
 

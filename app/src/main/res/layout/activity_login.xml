@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login_signup.LoginFragment" >
+    tools:context=".view.login_signup.LoginActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,6 +60,7 @@
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:enabled="false"
+            android:onClick="login"
             android:text="@string/login_button"
             tools:ignore="TextContrastCheck" />
 

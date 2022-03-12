@@ -6,7 +6,7 @@
     <string name="instructor_signup_button">Signup as instructor</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="login_fragment_label">Log in to your account</string>
+    <string name="login_activity_label">Log in to your account</string>
     <string name="signup_activity_label">Create new account</string>
     <string name="student_signup_tab">Student</string>
     <string name="instructor_signup_tab">Instructor</string>
@@ -23,4 +23,8 @@
     <string name="password_repeat_error">Password and its repetition don\'t match</string>
     <string name="required_error">Please fill in all the fields</string>
     <string name="fix_errors">Please fix the errors above</string>
+    <string name="error_signing_up">Signup failed, please try a few moments later</string>
+    <string name="error_loging_up">Login failed, please try a few moments later</string>
+    <string name="successful_login">Successfully logged in</string>
+    <string name="successful_signup">Successfully signed up</string>
 </resources>

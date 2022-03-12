@@ -1,4 +1,4 @@
-package com.example.quera.module;
+package com.example.quera.model;
 
 import java.util.ArrayList;
 
