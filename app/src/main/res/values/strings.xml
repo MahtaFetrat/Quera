@@ -27,4 +27,7 @@
     <string name="error_loging_up">Login failed, please try a few moments later</string>
     <string name="successful_login">Successfully logged in</string>
     <string name="successful_signup">Successfully signed up</string>
+
+    <!-- SharedPreferences keys -->
+    <string name="saved_users_key">saved_users_key</string>
 </resources>
