@@ -4,6 +4,10 @@ import com.example.quera.model.Professor;
 import com.example.quera.model.Student;
 import com.example.quera.model.User;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public class DataController {
@@ -49,5 +53,15 @@ public class DataController {
 
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public String getUsersDataString() {
+        return new Gson().toJson(allUsers);
+    }
+
+    public void readUsersDataString(String dataString) {
+        Type type = new TypeToken<HashMap<String, User>>(){}.getType();
+        allUsers = new Gson().fromJson(dataString, type);
+        // TODO: read Class objects by some key
     }
 }
