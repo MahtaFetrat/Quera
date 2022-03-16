@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Assignment {
     protected String name;
+    protected Class className;
     protected ArrayList<Answer> answers;
     protected ArrayList<Assignment> assignments;
 
-    public Assignment(String name) {
+    public Assignment(String name, Class className) {
         this.name = name;
+        this.className = className;
         assignments.add(this);
     }
 

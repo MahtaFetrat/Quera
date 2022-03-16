@@ -19,4 +19,8 @@ public class Class {
     public ArrayList<Assignment> getAssignments() {
         return assignments;
     }
+
+    public void addAssignment(Assignment assignment) {
+        this.assignments.add(assignment);
+    }
 }

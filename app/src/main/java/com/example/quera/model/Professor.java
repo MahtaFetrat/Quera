@@ -19,8 +19,8 @@ public class Professor extends User {
         return assignments;
     }
 
-    public void newAssignment(String name) {
-        Assignment assignment = new Assignment(name);
+    public void newAssignment(String name, Class currentClass) {
+        Assignment assignment = new Assignment(name, currentClass);
         assignments.add(assignment);
     }
 
