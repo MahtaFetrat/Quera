@@ -1,24 +1,24 @@
-package com.example.quera.controller;
+package com.example.queratest.controll;
 
-import com.example.quera.model.Student;
-import com.example.quera.model.Class;
+import com.example.queratest.module.Student;
+import com.example.queratest.module.Class;
 
 import java.util.ArrayList;
 
 public class StudentPanelController {
-    public ArrayList<String> getClassesName(ArrayList<Class> classes){
-        ArrayList<String> names = new ArrayList<>();
+    public String getClassesName(ArrayList<Class> classes){
+        StringBuilder names = new StringBuilder();
         for (Class c : classes) {
-            names.add(c.getName());
+            names.append(c.getName());
         }
-        return names;
+        return names.toString();
     }
 
-    public ArrayList<String> getStudentClassNames(Student student){
+    public String getStudentClassNames(Student student){
         return this.getClassesName(student.getClasses());
     }
 
-    public ArrayList<String> getClassNamesStudentCanJoin(Student student){
+    public String getClassNamesStudentCanJoin(Student student){
         ArrayList<Class> classes = new ArrayList<>(Class.allClasses);
         classes.removeAll(student.getClasses());
         return this.getClassesName(classes);
@@ -26,5 +26,24 @@ public class StudentPanelController {
 
     public void addStudentToClass(Student student, Class c){
         student.addStudentToClass(c);
+    }
+
+    public Student getStudentByUsername(String username) {
+        for (Student s :
+                Student.allStudents) {
+            if (s.getUsername().equals(username)) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    public Class getStudentClassByName(Student student, String className) {
+        for (Class c :
+                student.getClasses()) {
+            if (className.equals(c.getName()))
+                return c;
+        }
+        return null;
     }
 }
