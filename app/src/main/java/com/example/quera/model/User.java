@@ -40,6 +40,10 @@ public class User {
         return lastname;
     }
 
+    public String getName() {
+        return firstname + " " + lastname;
+    }
+    
     public ArrayList<Class> getClasses() {
         return classes;
     }
