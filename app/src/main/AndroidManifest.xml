@@ -18,6 +18,24 @@
             android:exported="false"
             android:label="@string/signup_activity_label" />
         <activity
+            android:name=".ui.student_panel.StudentPanelActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ui.student_panel.AddToClassActivity"
+            android:parentActivityName=".ui.student_panel.StudentPanelActivity"/>
+        <activity
+            android:name=".ui.professor_panel.ProfessorPanelActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ui.professor_panel.CreateClassActivity"
+            android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity"/>
+        <activity
+            android:name=".ui.student_panel.StudentClassActivity"
+            android:parentActivityName=".ui.student_panel.StudentPanelActivity"/>
+        <activity
+            android:name=".ui.professor_panel.ProfessorClassActivity"
+            android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
