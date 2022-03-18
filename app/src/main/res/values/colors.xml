@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="sky_blue">#FF00B8F1</color>
-    <color name="teal">#00BFB9</color>
-    <color name="light_coral">#FB6685</color>
-    <color name="crimson">#E41037</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-</resources>
