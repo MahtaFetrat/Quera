@@ -31,6 +31,8 @@
     <string name="answer">Answer</string>
     <string name="grade">Grade</string>
     <string name="change">Change</string>
+    <string name="change_name">Change name</string>
+    <string name="add_assignment">Add assignment</string>
 
     <!-- SharedPreferences keys -->
     <string name="saved_users_key">saved_users_key</string>
