@@ -33,6 +33,24 @@
     <string name="change">Change</string>
     <string name="change_name">Change name</string>
     <string name="add_assignment">Add assignment</string>
+    <string name="student_panel_activity_label">Student Panel</string>
+    <string name="student">student</string>
+    <string name="username">username</string>
+    <string name="professor">professor</string>
+    <string name="className">class</string>
+    <string name="confirmClassButton">confirm</string>
+    <string name="wrongClass">choose one of the classes above.</string>
+    <string name="addClass">add to class</string>
+    <string name="classesToAddTitle">classes you can add</string>
+    <string name="yourClassesTitle">Your classes</string>
+    <string name="createClass">create class</string>
+    <string name="clas">class name</string>
+    <string name="classNameUsed">this name is used</string>
+    <string name="classAssignments">assignments</string>
+    <string name="chooseAssignmentMessage">choose one of the assignments above.</string>
+    <string name="CreateAssignment">create assignment</string>
+    <string name="textview">TextView</string>
+
 
     <!-- SharedPreferences keys -->
     <string name="saved_users_key">saved_users_key</string>
