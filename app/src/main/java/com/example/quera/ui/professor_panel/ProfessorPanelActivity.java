@@ -17,7 +17,7 @@ import com.example.quera.model.Class;
 import com.example.quera.model.Professor;
 import com.example.quera.ui.student_panel.StudentClassActivity;
 import com.example.quera.ui.student_panel.StudentPanelActivity;
-import com.example.queratest.ui.professor_panel.CreateClassActivity;
+import com.example.quera.ui.professor_panel.CreateClassActivity;
 
 public class ProfessorPanelActivity extends AppCompatActivity {
 

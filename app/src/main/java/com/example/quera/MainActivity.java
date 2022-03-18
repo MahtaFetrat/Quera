@@ -7,11 +7,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.quera.controller.ClassController;
 import com.example.quera.controller.DataController;
+import com.example.quera.controller.ProfessorPanelController;
+import com.example.quera.controller.StudentPanelController;
 import com.example.quera.view.login_signup.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     public static DataController dataController = new DataController();
+    public static StudentPanelController studentPanelController = new StudentPanelController();
+    public static ProfessorPanelController professorPanelController = new ProfessorPanelController();
+    public static ClassController classController = new ClassController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
