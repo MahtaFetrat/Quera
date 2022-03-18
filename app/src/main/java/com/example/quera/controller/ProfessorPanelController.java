@@ -1,8 +1,8 @@
-package com.example.queratest.controll;
+package com.example.quera.controller;
 
-import com.example.queratest.module.Professor;
-import com.example.queratest.module.Student;
-import com.example.queratest.module.Class;
+import com.example.quera.model.Professor;
+import com.example.quera.model.Student;
+import com.example.quera.model.Class;
 
 import java.util.ArrayList;
 

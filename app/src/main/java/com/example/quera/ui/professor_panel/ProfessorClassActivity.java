@@ -1,4 +1,4 @@
-package com.example.queratest.ui.professor_panel;
+package com.example.quera.ui.professor_panel;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.queratest.MainActivity;
-import com.example.queratest.R;
-import com.example.queratest.controll.ClassController;
-import com.example.queratest.module.Class;
-import com.example.queratest.module.Professor;
-import com.example.queratest.module.Student;
+import com.example.quera.MainActivity;
+import com.example.quera.R;
+import com.example.quera.controller.ClassController;
+import com.example.quera.model.Class;
+import com.example.quera.model.Professor;
+import com.example.quera.model.Student;
 
 public class ProfessorClassActivity extends AppCompatActivity {
     ClassController controller = MainActivity.classController;

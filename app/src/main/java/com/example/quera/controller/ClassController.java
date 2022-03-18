@@ -1,10 +1,10 @@
-package com.example.queratest.controll;
+package com.example.quera.controller;
 
-import com.example.queratest.module.Assignment;
-import com.example.queratest.module.Professor;
-import com.example.queratest.module.Student;
-import com.example.queratest.module.Class;
-import com.example.queratest.module.User;
+import com.example.quera.model.Assignment;
+import com.example.quera.model.Professor;
+import com.example.quera.model.Student;
+import com.example.quera.model.Class;
+import com.example.quera.model.User;
 
 public class ClassController {
     public Class getUserClassByName(User user, String className) {
