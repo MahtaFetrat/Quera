@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Student extends User {
     public static ArrayList<Student> allStudents;
+    public static Student loggedStudent;
     protected String studentNumber;
     protected ArrayList<Assignment> assignments;
     protected ArrayList<Answer> answers;
@@ -25,6 +26,12 @@ public class Student extends User {
         return answers;
     }
 
+    public static Student getLoggedStudent() { return loggedStudent; }
+
+    public static void studentLogin(Student student) {
+        loggedStudent = student;
+    }
+
     public void addAssignment(Assignment assignment) {
         this.assignments.add(assignment);
     }
@@ -36,5 +43,14 @@ public class Student extends User {
 
     public void editAnswer(Answer answer, String newAnswer) {
         answer.setAnswer(newAnswer);
+    }
+
+    public Answer getAnswerByAssignment(String assignmentName) {
+        for (Answer answer : answers) {
+            if (answer.getAssignment().getName().equals(assignmentName)) {
+                return answer;
+            }
+        }
+        return null;
     }
 }

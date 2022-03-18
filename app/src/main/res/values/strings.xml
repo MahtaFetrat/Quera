@@ -27,6 +27,10 @@
     <string name="error_loging_up">Login failed, please try a few moments later</string>
     <string name="successful_login">Successfully logged in</string>
     <string name="successful_signup">Successfully signed up</string>
+    <string name="assignment">Assignment</string>
+    <string name="answer">Answer</string>
+    <string name="grade">Grade</string>
+    <string name="change">Change</string>
 
     <!-- SharedPreferences keys -->
     <string name="saved_users_key">saved_users_key</string>
