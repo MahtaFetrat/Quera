@@ -40,11 +40,8 @@ public class StudentPanelActivity extends AppCompatActivity {
         classNameEditText = findViewById(R.id.classNameStudentPanel);
         messageTextView = findViewById(R.id.studentPanelMessage);
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-
-        this.student = controller.getStudentByUsername(username);
-        nameTextView.setText(username);
+        student = (Student) MainActivity.dataController.getCurrentUser();
+        nameTextView.setText(student.getUsername());
         classesTextView.setText(controller.getStudentClassNames(this.student));
 
         confirmButton.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,7 @@ package com.example.quera.model;
 import java.util.ArrayList;
 
 public class Student extends User {
-    public static ArrayList<Student> allStudents;
+    public static ArrayList<Student> allStudents = new ArrayList<>();
     public static Student loggedStudent;
     protected String studentNumber;
     protected ArrayList<Assignment> assignments;

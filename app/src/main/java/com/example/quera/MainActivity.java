@@ -11,6 +11,9 @@ import com.example.quera.controller.ClassController;
 import com.example.quera.controller.DataController;
 import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.controller.StudentPanelController;
+import com.example.quera.model.Professor;
+import com.example.quera.ui.professor_panel.ProfessorPanelActivity;
+import com.example.quera.ui.student_panel.StudentPanelActivity;
 import com.example.quera.view.login_signup.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,11 +28,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         readData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         /*TODO: To be replaced with conditional navigation to dashboard/login fragment based on sign in information loaded at startup
            read https://developer.android.com/guide/navigation/navigation-conditional for more*/
         if (dataController.getCurrentUser() == null) {
             startActivity(new Intent(this, LoginActivity.class));
+        } else {
+            startActivity(new Intent(this, (dataController.getCurrentUser() instanceof Professor ? ProfessorPanelActivity.class : StudentPanelActivity.class)));
         }
     }
 

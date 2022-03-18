@@ -45,12 +45,8 @@ public class ProfessorPanelActivity extends AppCompatActivity {
         confirmButton = findViewById(R.id.proffesorPanelConfirmClassButton);
         messageTextView = findViewById(R.id.professorPanelMessage);
 
-
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-
-        this.professor = controller.getProfessorByUsername(username);
-        nameTextView.setText(username);
+        professor = (Professor) MainActivity.dataController.getCurrentUser();
+        nameTextView.setText(professor.getUsername());
         classesTextView.setText(controller.getProfessorClassNames(professor));
 
         createClassButton.setOnClickListener(new View.OnClickListener() {

@@ -8,7 +8,7 @@ public class User {
     protected String password;
     protected String firstname;
     protected String lastname;
-    protected ArrayList<Class> classes;
+    protected ArrayList<Class> classes = new ArrayList<>();
     private static HashMap<String, User> allUsers = new HashMap<>();
 
     public User(String username, String password, String firstname, String lastname) {
