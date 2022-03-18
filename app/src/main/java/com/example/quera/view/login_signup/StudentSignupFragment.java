@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.model.Student;
+import com.example.quera.model.User;
 import com.example.quera.utils.Validator;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -74,7 +75,7 @@ public class StudentSignupFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 isFormValid = false;
-                if (MainActivity.dataController.isUsernameAvailable(usernameField.getText().toString())
+                if (User.isUsernameAvailable(usernameField.getText().toString())
                         && !TextUtils.isEmpty(usernameField.getText())) {
                     usernameField.setError(getString(R.string.username_taken_error));
                 } else if (Validator.isPasswordInvalid(passwordField.getText().toString())

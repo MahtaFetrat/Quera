@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!MainActivity.dataController.isUsernameAvailable(usernameField.getText().toString())) {
+                if (!User.isUsernameAvailable(usernameField.getText().toString())) {
                     usernameField.setError(getString(R.string.invalid_username_error));
                     loginButton.setEnabled(false);
                 } else {

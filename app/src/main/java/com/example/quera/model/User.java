@@ -1,6 +1,7 @@
 package com.example.quera.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
     protected String username;
@@ -8,12 +9,17 @@ public class User {
     protected String firstname;
     protected String lastname;
     protected ArrayList<Class> classes;
+    private static HashMap<String, User> allUsers = new HashMap<>();
 
     public User(String username, String password, String firstname, String lastname) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
+    }
+
+    public static boolean isUsernameAvailable(String username) {
+        return allUsers.containsKey(username);
     }
 
     public Class getClassByName(String name) {
@@ -54,5 +60,13 @@ public class User {
 
     public boolean passwordMatches(String password) {
         return this.password.equals(password);
+    }
+
+    public static HashMap<String, User> getAllUsers() {
+        return allUsers;
+    }
+
+    public static void setAllUsers(HashMap<String, User> allUsers){
+        User.allUsers = allUsers;
     }
 }
