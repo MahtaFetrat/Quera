@@ -10,7 +10,7 @@ public class Student extends User {
     protected ArrayList<Answer> answers;
 
     public Student(String username, String password, String firstname, String lastname, String studentNumber) {
-        super(username, password, firstname, lastname);
+        super(username, password, firstname, lastname, User.UserType.STUDENT);
         this.studentNumber = studentNumber;
     }
 

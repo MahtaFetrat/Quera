@@ -4,18 +4,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class User {
+    public enum UserType{
+        STUDENT,
+        PROFESSOR
+    }
+
     protected String username;
     protected String password;
     protected String firstname;
     protected String lastname;
+    protected UserType userType;
     protected ArrayList<Class> classes = new ArrayList<>();
     private static HashMap<String, User> allUsers = new HashMap<>();
 
-    public User(String username, String password, String firstname, String lastname) {
+    public User(String username, String password, String firstname, String lastname, UserType userType) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.userType = userType;
     }
 
     public static boolean isUsernameAvailable(String username) {
@@ -68,5 +75,13 @@ public class User {
 
     public static void setAllUsers(HashMap<String, User> allUsers){
         User.allUsers = allUsers;
+    }
+
+    public boolean instanceofStudent() {
+        return userType == UserType.STUDENT;
+    }
+
+    public boolean instanceofProfessor() {
+        return userType == UserType.PROFESSOR;
     }
 }

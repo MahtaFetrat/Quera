@@ -8,7 +8,7 @@ public class Professor extends User {
     protected ArrayList<Assignment> assignments;
 
     public Professor(String username, String password, String firstname, String lastname, String university) {
-        super(username, password, firstname, lastname);
+        super(username, password, firstname, lastname, UserType.PROFESSOR);
         this.university = university;
     }
 

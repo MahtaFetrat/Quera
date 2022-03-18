@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.quera.controller.ClassController;
 import com.example.quera.controller.DataController;
 import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Professor;
+import com.example.quera.model.Student;
+import com.example.quera.model.User;
 import com.example.quera.ui.professor_panel.ProfessorPanelActivity;
 import com.example.quera.ui.student_panel.StudentPanelActivity;
 import com.example.quera.view.login_signup.LoginActivity;
@@ -28,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         readData();
+
+        for (User user: User.getAllUsers().values()){
+            Log.d("debmydeb", String.valueOf(user.instanceofStudent()));
+        }
     }
 
     @Override
@@ -39,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         if (dataController.getCurrentUser() == null) {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
-            startActivity(new Intent(this, (dataController.getCurrentUser() instanceof Professor ? ProfessorPanelActivity.class : StudentPanelActivity.class)));
+            startActivity(new Intent(this, (dataController.getCurrentUser().instanceofProfessor() ? ProfessorPanelActivity.class : StudentPanelActivity.class)));
         }
     }
 
