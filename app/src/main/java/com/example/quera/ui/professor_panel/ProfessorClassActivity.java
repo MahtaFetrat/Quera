@@ -1,6 +1,7 @@
 package com.example.quera.ui.professor_panel;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -73,7 +74,7 @@ import java.util.ArrayList;
 //    }
 //}
 
-public class ProfessorClassActivity extends AppCompatActivity {
+public class ProfessorClassActivity extends AppCompatActivity implements GetNameDialog.GetNameDialogListener {
     ClassController controller = MainActivity.classController;
 
     protected Course course;
@@ -104,6 +105,13 @@ public class ProfessorClassActivity extends AppCompatActivity {
     }
 
     public void addAssignment(View view) {
-        // do something...
+        GetNameDialog getNameDialog = new GetNameDialog();
+        getNameDialog.show(getSupportFragmentManager(), "getNameDialog");
+    }
+
+    @Override
+    public void applyName(String name) {
+        course.addAssignment(name);
+        assignmentsName.add(name);
     }
 }
