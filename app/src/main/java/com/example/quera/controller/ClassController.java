@@ -9,7 +9,7 @@ public class ClassController {
         return Course.getAllClasses().get(className);
     }
 
-    public Course getClassByName(String name) {
+    public static Course getClassByName(String name) {
         return Course.getAllClasses().get(name);
     }
 
