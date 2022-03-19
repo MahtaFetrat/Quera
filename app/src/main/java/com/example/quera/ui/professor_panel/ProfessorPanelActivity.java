@@ -16,7 +16,6 @@ import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
 
-import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfessorPanelActivity extends BaseActivity {
@@ -71,7 +70,7 @@ public class ProfessorPanelActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         professor = (Professor) DataController.getCurrentUser();
-        nameTextView.setText(nameTextView.getText().toString() + " " +  professor.getUsername());
+        nameTextView.setText(professor.getUsername());
         classesTextView.setText(controller.getProfessorClassNames(professor));
     }
 }
