@@ -3,6 +3,7 @@ package com.example.quera.model;
 import androidx.annotation.NonNull;
 
 public class Answer {
+    public static Answer currentAnswer;
     protected Student student;
     protected Assignment assignment;
     protected String answer;
@@ -36,5 +37,9 @@ public class Answer {
 
     public void setGrade(float grade) {
         this.grade = grade;
+    }
+
+    public static Answer getCurrentAnswer() {
+        return currentAnswer;
     }
 }
