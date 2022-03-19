@@ -6,7 +6,7 @@ import com.example.quera.model.Course;
 
 public class ProfessorPanelController {
     public String getProfessorClassNames(Professor professor){
-        return String.join(", ", professor.getClassNames());
+        return String.join("\n", professor.getClassNames());
     }
 
     public Professor getProfessorByUsername(String username) {

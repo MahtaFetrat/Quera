@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
@@ -19,6 +17,7 @@ import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
 
 import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfessorPanelActivity extends BaseActivity {
 
@@ -28,7 +27,7 @@ public class ProfessorPanelActivity extends BaseActivity {
     TextView nameTextView;
     TextView classesTextView;
     EditText classNameEditText;
-    Button createClassButton;
+    FloatingActionButton createClassButton;
     Button confirmButton;
     TextView messageTextView;
 
@@ -72,7 +71,7 @@ public class ProfessorPanelActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         professor = (Professor) DataController.getCurrentUser();
-        nameTextView.setText(professor.getUsername());
+        nameTextView.setText(nameTextView.getText().toString() + " " +  professor.getUsername());
         classesTextView.setText(controller.getProfessorClassNames(professor));
     }
 }

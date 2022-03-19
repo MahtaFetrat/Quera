@@ -7,14 +7,14 @@ import java.util.HashMap;
 
 public class StudentPanelController {
     public String getStudentClassNames(Student student){
-        return String.join(", ", student.getClassNames());
+        return String.join("\n", student.getClassNames());
     }
 
     public String getClassNamesStudentCanJoin(Student student){
         HashMap<String, Course> classes = new HashMap<>();
         classes.putAll(Course.getAllClasses());
         classes.keySet().removeIf(k -> student.getClassNames().contains(k));
-        return String.join(", ", classes.keySet());
+        return String.join("\n", classes.keySet());
     }
 
     public void addStudentToClass(Student student, Course c){
