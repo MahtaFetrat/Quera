@@ -17,7 +17,6 @@ import com.example.quera.R;
 import com.example.quera.controller.ClassController;
 import com.example.quera.model.Assignment;
 import com.example.quera.view.assignments.AnswersFragment;
-import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
 
 import java.util.Objects;
 
@@ -30,7 +29,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
 
     public ProfessorAssignmentsAdapter(ProfessorClassActivity ct, String[] assignmentNames) {
         context = ct;
-        assignments = (String[]) assignmentNames;
+        assignments = assignmentNames;
     }
 
     @NonNull
