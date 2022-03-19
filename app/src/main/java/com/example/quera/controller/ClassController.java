@@ -14,20 +14,10 @@ public class ClassController {
     }
 
     public String getClassAssignments(Course c) {
-        StringBuilder assignments = new StringBuilder("");
-        for (Assignment assignment :
-                c.getAssignments()) {
-            assignments.append(assignment.getName());
-        }
-        return assignments.toString();
+        return String.join(", ", c.getAssignmentIds());
     }
 
     public Assignment getClassAssignmentByName(Course clas, String assignment) {
-        for (Assignment a :
-                clas.getAssignments()) {
-            if (assignment.equals(a.getName()))
-                return a;
-        }
-        return null;
+        return Assignment.getAllAssignments().get(Assignment.getId(clas.getName(), assignment));
     }
 }
