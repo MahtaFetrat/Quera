@@ -38,6 +38,4 @@ public class Course {
     public static void setAllClasses(HashMap<String, Course> allClasses) {
         Course.allClasses = allClasses;
     }
-
-    // TODO: check for class name uniqueness
 }

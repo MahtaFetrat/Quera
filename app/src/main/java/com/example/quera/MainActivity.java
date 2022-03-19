@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
             startActivity(new Intent(this, (DataController.getCurrentUser() instanceof Professor ? ProfessorPanelActivity.class : StudentPanelActivity.class)));
+            finish();
         }
     }
 }
