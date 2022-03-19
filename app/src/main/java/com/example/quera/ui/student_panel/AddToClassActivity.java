@@ -8,15 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.StudentPanelController;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 import com.example.quera.model.Student;
 
-public class AddToClassActivity extends AppCompatActivity {
+public class AddToClassActivity extends BaseActivity {
     StudentPanelController controller = MainActivity.studentPanelController;
 
     TextView usernameTextView;
@@ -46,7 +45,7 @@ public class AddToClassActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class c = controller.getStudentClassByName(student, classNameEditText.getText().toString());
+                Course c = controller.getStudentClassByName(student, classNameEditText.getText().toString());
                 if (!(controller.getClassNamesStudentCanJoin(student).contains(c.getName()))) {
                     messageTextView.setTextColor(Color.RED);
                 } else {

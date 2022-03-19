@@ -8,14 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.controller.DataController;
 import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Student;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 
 public class StudentPanelActivity extends BaseActivity {
 
@@ -41,14 +40,10 @@ public class StudentPanelActivity extends BaseActivity {
         classNameEditText = findViewById(R.id.classNameStudentPanel);
         messageTextView = findViewById(R.id.studentPanelMessage);
 
-        student = (Student) MainActivity.dataController.getCurrentUser();
-        nameTextView.setText(student.getUsername());
-        classesTextView.setText(controller.getStudentClassNames(this.student));
-
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class c;
+                Course c;
                 if ((c = controller.getStudentClassByName(student, classNameEditText.getText().toString())) == null) {
                     messageTextView.setTextColor(Color.RED);
                 } else {
@@ -68,5 +63,13 @@ public class StudentPanelActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        student = (Student) DataController.getCurrentUser();
+        nameTextView.setText(student.getUsername());
+        classesTextView.setText(controller.getStudentClassNames(this.student));
     }
 }

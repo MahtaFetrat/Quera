@@ -1,6 +1,5 @@
 package com.example.quera.model;
 
-import androidx.annotation.NonNull;
 
 public class Answer {
     public static Answer currentAnswer;

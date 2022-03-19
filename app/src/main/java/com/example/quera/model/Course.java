@@ -2,15 +2,14 @@ package com.example.quera.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.UUID;
 
-public class Class {
-    public static HashMap<String, Class> allClasses = new HashMap<>();
+public class Course {
+    public static HashMap<String, Course> allClasses = new HashMap<>();
     protected String name;
     protected Professor professor;
     protected ArrayList<Assignment> assignments = new ArrayList<>();
     
-    public Class(String name, Professor professor) {
+    public Course(String name, Professor professor) {
         this.name = name;
         this.professor = professor;
         this.assignments = new ArrayList<>();
@@ -32,8 +31,12 @@ public class Class {
         this.assignments.add(assignment);
     }
 
-    public static HashMap<String, Class> getAllClasses() {
+    public static HashMap<String, Course> getAllClasses() {
         return allClasses;
+    }
+
+    public static void setAllClasses(HashMap<String, Course> allClasses) {
+        Course.allClasses = allClasses;
     }
 
     // TODO: check for class name uniqueness

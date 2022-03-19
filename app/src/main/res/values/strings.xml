@@ -57,4 +57,5 @@
     <string name="saved_professors_key">saved_professors_key</string>
     <string name="logout">Logout</string>
     <string name="saved_classes_key">saved_classes_key</string>
+    <string name="preference_file_key">com.example.quera</string>
 </resources>

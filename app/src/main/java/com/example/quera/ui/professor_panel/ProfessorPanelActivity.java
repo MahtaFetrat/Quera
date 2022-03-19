@@ -8,17 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.controller.DataController;
 import com.example.quera.controller.ProfessorPanelController;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
 import com.example.quera.ui.student_panel.StudentClassActivity;
-import com.example.quera.ui.student_panel.StudentPanelActivity;
-import com.example.quera.ui.professor_panel.CreateClassActivity;
 
 public class ProfessorPanelActivity extends BaseActivity {
 
@@ -46,10 +44,6 @@ public class ProfessorPanelActivity extends BaseActivity {
         confirmButton = findViewById(R.id.proffesorPanelConfirmClassButton);
         messageTextView = findViewById(R.id.professorPanelMessage);
 
-        professor = (Professor) MainActivity.dataController.getCurrentUser();
-        nameTextView.setText(professor.getUsername());
-        classesTextView.setText(controller.getProfessorClassNames(professor));
-
         createClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +56,7 @@ public class ProfessorPanelActivity extends BaseActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class c;
+                Course c;
                 if ((c = controller.getProfessorClassByName(professor, classNameEditText.getText().toString())) == null) {
                     messageTextView.setTextColor(Color.RED);
                 } else {
@@ -73,5 +67,13 @@ public class ProfessorPanelActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        professor = (Professor) DataController.getCurrentUser();
+        nameTextView.setText(professor.getUsername());
+        classesTextView.setText(controller.getProfessorClassNames(professor));
     }
 }

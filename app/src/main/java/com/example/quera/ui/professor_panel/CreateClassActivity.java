@@ -1,5 +1,6 @@
 package com.example.quera.ui.professor_panel;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,15 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.model.Professor;
-import com.example.quera.model.Class;
 
-public class CreateClassActivity extends AppCompatActivity {
+public class CreateClassActivity extends BaseActivity {
     ProfessorPanelController controller = MainActivity.professorPanelController;
 
     TextView usernameTextView;
@@ -48,6 +47,8 @@ public class CreateClassActivity extends AppCompatActivity {
                 String className;
                 if (MainActivity.classController.getClassByName(className = classNameEditText.getText().toString()) == null) {
                     controller.createClass(className, professor);
+                    setResult(Activity.RESULT_OK);
+                    finish();
                 } else {
                     nameIsUsedTextView.setTextColor(Color.RED);
                     nameIsUsedTextView.setVisibility(View.VISIBLE);

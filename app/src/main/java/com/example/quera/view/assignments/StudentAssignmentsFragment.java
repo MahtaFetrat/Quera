@@ -10,12 +10,12 @@ import com.example.quera.R;
 import com.example.quera.model.Answer;
 import com.example.quera.model.Assignment;
 import com.example.quera.model.Student;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 
 import java.util.ArrayList;
 
 public class StudentAssignmentsFragment extends AppCompatActivity {
-    protected Class enteredClass;
+    protected Course enteredClass;
     protected ArrayList<Assignment> classAssignments;
     protected ArrayList<Answer> answers;
     protected ArrayList<String> assignmentsName, studentAnswers;

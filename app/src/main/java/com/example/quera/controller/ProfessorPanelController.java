@@ -1,10 +1,8 @@
 package com.example.quera.controller;
 
 import com.example.quera.model.Professor;
-import com.example.quera.model.Student;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 
-import java.util.ArrayList;
 
 public class ProfessorPanelController {
     public String getProfessorClassNames(Professor professor){
@@ -21,13 +19,14 @@ public class ProfessorPanelController {
         return null;
     }
 
-    public Class getProfessorClassByName(Professor professor, String className) {
-        return Class.allClasses.get(className);
+    public Course getProfessorClassByName(Professor professor, String className) {
+        return Course.allClasses.get(className);
     }
 
     public void createClass (String name, Professor professor) {
-        Class c = new Class(name, professor);
+        Course c = new Course(name, professor);
         professor.getClassNames().add(c.getName());
-        Class.allClasses.put(c.getName(), c);
+        Course.allClasses.put(c.getName(), c);
+        ;
     }
 }

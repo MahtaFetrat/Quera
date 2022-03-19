@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.controller.DataController;
 import com.example.quera.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        User user = MainActivity.dataController.login(usernameField.getText().toString(), passwordField.getText().toString());
+        User user = DataController.login(usernameField.getText().toString(), passwordField.getText().toString());
         if (user != null) {
             Toast.makeText(this, R.string.successful_login, Toast.LENGTH_SHORT).show();
             setResult(Activity.RESULT_OK);
