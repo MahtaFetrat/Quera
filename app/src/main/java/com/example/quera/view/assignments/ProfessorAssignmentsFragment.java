@@ -9,13 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quera.R;
 import com.example.quera.model.Assignment;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ProfessorAssignmentsFragment extends AppCompatActivity {
-    protected Class enteredClass;
+    protected Course enteredClass;
     protected ArrayList<Assignment> classAssignments;
     protected ArrayList<String> assignmentsName;
     private RecyclerView recyclerView;

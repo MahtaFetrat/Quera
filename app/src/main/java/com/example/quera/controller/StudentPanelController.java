@@ -1,49 +1,31 @@
 package com.example.quera.controller;
 
 import com.example.quera.model.Student;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StudentPanelController {
-    public String getClassesName(ArrayList<Class> classes){
-        StringBuilder names = new StringBuilder();
-        for (Class c : classes) {
-            names.append(c.getName());
-        }
-        return names.toString();
-    }
-
     public String getStudentClassNames(Student student){
-        return this.getClassesName(student.getClasses());
+        return String.join(", ", student.getClassNames());
     }
 
     public String getClassNamesStudentCanJoin(Student student){
-        ArrayList<Class> classes = new ArrayList<>(Class.allClasses);
-        classes.removeAll(student.getClasses());
-        return this.getClassesName(classes);
+        HashMap<String, Course> classes = new HashMap<>();
+        classes.putAll(Course.getAllClasses());
+        classes.keySet().removeIf(k -> student.getClassNames().contains(k));
+        return String.join(", ", classes.keySet());
     }
 
-    public void addStudentToClass(Student student, Class c){
-        student.addStudentToClass(c);
+    public void addStudentToClass(Student student, Course c){
+        student.addStudentToClass(c.getName());
     }
 
     public Student getStudentByUsername(String username) {
-        for (Student s :
-                Student.getAllStudents().values()) {
-            if (s.getUsername().equals(username)) {
-                return s;
-            }
-        }
-        return null;
+        return Student.getAllStudents().get(username);
     }
 
-    public Class getStudentClassByName(Student student, String className) {
-        for (Class c :
-                student.getClasses()) {
-            if (className.equals(c.getName()))
-                return c;
-        }
-        return null;
+    public Course getStudentClassByName(Student student, String className) {
+        return Course.allClasses.get(className);
     }
 }

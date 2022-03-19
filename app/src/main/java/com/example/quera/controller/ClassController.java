@@ -1,40 +1,28 @@
 package com.example.quera.controller;
 
 import com.example.quera.model.Assignment;
-import com.example.quera.model.Professor;
-import com.example.quera.model.Student;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 import com.example.quera.model.User;
 
 public class ClassController {
-    public Class getUserClassByName(User user, String className) {
-        for (Class c :
-                user.getClasses()) {
-            if (c.getName().equals(className))
-                return c;
-        }
-        return null;
+    public Course getUserClassByName(User user, String className) {
+        return Course.allClasses.get(className);
     }
 
-    public Class getClassByName(String name) {
-        for (Class c :
-                Class.allClasses) {
-            if (c.getName().equals(name))
-                return c;
-        }
-        return null;
+    public Course getClassByName(String name) {
+        return Course.getAllClasses().get(name);
     }
 
-    public String getClassAssignments(Class clas) {
+    public String getClassAssignments(Course c) {
         StringBuilder assignments = new StringBuilder("");
         for (Assignment assignment :
-                clas.getAssignments()) {
+                c.getAssignments()) {
             assignments.append(assignment.getName());
         }
         return assignments.toString();
     }
 
-    public Assignment getClassAssignmentByName(Class clas, String assignment) {
+    public Assignment getClassAssignmentByName(Course clas, String assignment) {
         for (Assignment a :
                 clas.getAssignments()) {
             if (assignment.equals(a.getName()))

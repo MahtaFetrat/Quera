@@ -8,7 +8,7 @@ public class User {
     protected String password;
     protected String firstname;
     protected String lastname;
-    protected ArrayList<Class> classes = new ArrayList<>();
+    protected ArrayList<String> classNames = new ArrayList<>();
 
     public User(String username, String password, String firstname, String lastname) {
         this.username = username;
@@ -19,14 +19,6 @@ public class User {
 
     public static boolean isUsernameAvailable(String username) {
         return Student.getAllStudents().containsKey(username) || Professor.getAllProfessors().containsKey(username);
-    }
-
-    public Class getClassByName(String name) {
-        for (Class c : this.classes) {
-            if (name.equals(c.name))
-                return c;
-        }
-        return null;
     }
 
     public String getUsername() {
@@ -49,12 +41,12 @@ public class User {
         return firstname + " " + lastname;
     }
     
-    public ArrayList<Class> getClasses() {
-        return classes;
+    public ArrayList<String> getClassNames() {
+        return classNames;
     }
 
-    public void addStudentToClass(Class c){
-        this.classes.add(c);
+    public void addStudentToClass(String classId){
+        this.classNames.add(classId);
     }
 
     public boolean passwordMatches(String password) {

@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.controller.DataController;
 import com.example.quera.model.Professor;
 import com.example.quera.model.User;
 import com.example.quera.utils.Validator;
@@ -111,7 +111,7 @@ public class InstructorSignupFragment extends Fragment {
             } else if (hasEmptyRequiredFields()) {
                 Toast.makeText(getActivity(), R.string.required_error, Toast.LENGTH_SHORT).show();
             } else {
-                Professor professor = MainActivity.dataController.signupInstructor(usernameField.getText().toString(),
+                Professor professor = DataController.signupInstructor(usernameField.getText().toString(),
                         passwordField.getText().toString(), firstNameField.getText().toString(),
                         lastNameField.getText().toString(), universityNameField.getText().toString());
                 if (professor != null) {

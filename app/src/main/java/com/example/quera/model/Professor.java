@@ -21,7 +21,7 @@ public class Professor extends User {
         return assignments;
     }
 
-    public void newAssignment(String name, Class currentClass) {
+    public void newAssignment(String name, Course currentClass) {
         Assignment assignment = new Assignment(name, currentClass);
         assignments.add(assignment);
     }

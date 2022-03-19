@@ -8,20 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ClassController;
-import com.example.quera.model.Class;
+import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
-import com.example.quera.model.Student;
 
-public class ProfessorClassActivity extends AppCompatActivity {
+public class ProfessorClassActivity extends BaseActivity {
     ClassController controller = MainActivity.classController;
 
     Professor professor;
-    Class clas;
+    Course clas;
     TextView classNameTextView;
     TextView professorNameTextView;
     TextView assignmentsTextView;
