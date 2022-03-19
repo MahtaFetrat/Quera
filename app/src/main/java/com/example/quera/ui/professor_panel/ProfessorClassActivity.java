@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,18 +79,25 @@ public class ProfessorClassActivity extends AppCompatActivity implements GetName
     ClassController controller = MainActivity.classController;
 
     protected Course course;
+    protected Professor professor;
     protected ArrayList<Assignment> classAssignments;
     protected ArrayList<String> assignmentsName;
     private RecyclerView recyclerView;
+    private TextView classNameTextView;
+    private TextView professorNameTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_professor_assignments);
+        setContentView(R.layout.activity_professor_class);
+
+        recyclerView = findViewById(R.id.ProfessorAssignmentsRecyclerView);
+        classNameTextView = findViewById(R.id.professorClassActivityClassName);
+        professorNameTextView = findViewById(R.id.professorClassActivityProfessorName);
+
 
         Intent intent = getIntent();
-
         course = controller.getClassByName(intent.getStringExtra("className"));
         classAssignments = course.getAssignments();
 
@@ -102,6 +110,10 @@ public class ProfessorClassActivity extends AppCompatActivity implements GetName
             recyclerView.setAdapter(professorAssignmentsAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
+
+        professor = MainActivity.professorPanelController.getProfessorByUsername(intent.getStringExtra("username"));
+        professorNameTextView.setText(professorNameTextView.getText().toString() + " " + professor.getName());
+        classNameTextView.setText(classNameTextView.getText().toString() + " " + course.getName());
     }
 
     public void addAssignment(View view) {
