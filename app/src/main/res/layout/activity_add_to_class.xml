@@ -30,7 +30,7 @@
             android:id="@+id/usernameAddToClassTextView"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/textview"
+            android:text=""
             app:layout_constraintBottom_toTopOf="@+id/scrollView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.165"
@@ -58,7 +58,7 @@
                     android:id="@+id/allClassseToAddTextVeiw"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/textview" />
+                    android:text="" />
             </LinearLayout>
         </ScrollView>
 
