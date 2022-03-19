@@ -17,6 +17,7 @@ import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
 import com.example.quera.ui.student_panel.StudentClassActivity;
+import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
 
 public class ProfessorPanelActivity extends BaseActivity {
 
@@ -44,27 +45,21 @@ public class ProfessorPanelActivity extends BaseActivity {
         confirmButton = findViewById(R.id.proffesorPanelConfirmClassButton);
         messageTextView = findViewById(R.id.professorPanelMessage);
 
-        createClassButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfessorPanelActivity.this, CreateClassActivity.class);
-                intent.putExtra("username", professor.getUsername());
-                startActivity(intent);
-            }
+        createClassButton.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfessorPanelActivity.this, CreateClassActivity.class);
+            intent.putExtra("username", professor.getUsername());
+            startActivity(intent);
         });
 
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Course c;
-                if ((c = controller.getProfessorClassByName(professor, classNameEditText.getText().toString())) == null) {
-                    messageTextView.setTextColor(Color.RED);
-                } else {
-                    Intent intent = new Intent(ProfessorPanelActivity.this, StudentClassActivity.class);
-                    intent.putExtra("username", professor.getUsername());
-                    intent.putExtra("className", c.getName());
-                    startActivity(intent);
-                }
+        confirmButton.setOnClickListener(view -> {
+            Course c;
+            if ((c = controller.getProfessorClassByName(professor, classNameEditText.getText().toString())) == null) {
+                messageTextView.setTextColor(Color.RED);
+            } else {
+                Intent intent = new Intent(ProfessorPanelActivity.this, ProfessorAssignmentsFragment.class);
+                intent.putExtra("username", professor.getUsername());
+                intent.putExtra("className", c.getName());
+                startActivity(intent);
             }
         });
     }
