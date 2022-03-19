@@ -14,7 +14,7 @@ public class ClassController {
     }
 
     public String getClassAssignments(Course c) {
-        return String.join(", ", c.getAssignmentIds());
+        return String.join("\n", c.getAssignmentIds());
     }
 
     public Assignment getClassAssignmentByName(Course clas, String assignment) {
