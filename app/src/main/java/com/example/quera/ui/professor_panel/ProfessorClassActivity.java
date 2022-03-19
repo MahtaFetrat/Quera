@@ -102,7 +102,7 @@ public class ProfessorClassActivity extends AppCompatActivity {
             assignmentsName.add(assignment.getName());
         }
 
-        if (assignmentsName != null) {
+        if (assignmentsName.size() != 0) {
             ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray(new String[assignmentsName.size()]));
             recyclerView.setAdapter(professorAssignmentsAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
