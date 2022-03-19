@@ -10,13 +10,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Student;
 import com.example.quera.model.Class;
 
-public class StudentPanelActivity extends AppCompatActivity {
+public class StudentPanelActivity extends BaseActivity {
 
     StudentPanelController controller = MainActivity.studentPanelController;
 

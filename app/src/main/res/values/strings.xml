@@ -55,4 +55,5 @@
     <!-- SharedPreferences keys -->
     <string name="saved_students_key">saved_students_key</string>
     <string name="saved_professors_key">saved_professors_key</string>
+    <string name="logout">Logout</string>
 </resources>

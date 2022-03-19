@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ProfessorPanelController;
@@ -19,7 +20,7 @@ import com.example.quera.ui.student_panel.StudentClassActivity;
 import com.example.quera.ui.student_panel.StudentPanelActivity;
 import com.example.quera.ui.professor_panel.CreateClassActivity;
 
-public class ProfessorPanelActivity extends AppCompatActivity {
+public class ProfessorPanelActivity extends BaseActivity {
 
     ProfessorPanelController controller = MainActivity.professorPanelController;
 

@@ -10,31 +10,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quera">
         <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.login_signup.LoginActivity"
             android:exported="false"
-            android:label="@string/login_activity_label"/>
+            android:label="@string/login_activity_label" />
         <activity
             android:name=".view.login_signup.SignupActivity"
             android:exported="false"
             android:label="@string/signup_activity_label" />
         <activity
-            android:name=".ui.student_panel.StudentPanelActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:name=".ui.student_panel.StudentPanelActivity" />
         <activity
             android:name=".ui.student_panel.AddToClassActivity"
-            android:parentActivityName=".ui.student_panel.StudentPanelActivity"/>
+            android:parentActivityName=".ui.student_panel.StudentPanelActivity" />
         <activity
-            android:name=".ui.professor_panel.ProfessorPanelActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:name=".ui.professor_panel.ProfessorPanelActivity" />
         <activity
             android:name=".ui.professor_panel.CreateClassActivity"
-            android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity"/>
+            android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity" />
         <activity
             android:name=".ui.student_panel.StudentClassActivity"
-            android:parentActivityName=".ui.student_panel.StudentPanelActivity"/>
+            android:parentActivityName=".ui.student_panel.StudentPanelActivity" />
         <activity
             android:name=".ui.professor_panel.ProfessorClassActivity"
-            android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity"/>
+            android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

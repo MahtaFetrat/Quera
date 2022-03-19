@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.quera.controller.ClassController;
 import com.example.quera.controller.DataController;
@@ -18,7 +21,7 @@ import com.example.quera.ui.professor_panel.ProfessorPanelActivity;
 import com.example.quera.ui.student_panel.StudentPanelActivity;
 import com.example.quera.view.login_signup.LoginActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     public static DataController dataController = new DataController();
     public static StudentPanelController studentPanelController = new StudentPanelController();
     public static ProfessorPanelController professorPanelController = new ProfessorPanelController();
