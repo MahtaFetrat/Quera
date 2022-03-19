@@ -67,6 +67,7 @@ public class BaseActivity extends AppCompatActivity {
         editor.putString(getString(R.string.saved_students_key), DataController.getStudentsDataString());
         editor.putString(getString(R.string.saved_professors_key), DataController.getProfessorsDataString());
         editor.putString(getString(R.string.saved_classes_key), DataController.getClassesDataString());
+        editor.putString(getString(R.string.saved_assignments_key), DataController.getAssignmentsDataString());
 
         editor.apply();
     }

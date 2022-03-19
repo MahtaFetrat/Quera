@@ -1,17 +1,20 @@
 package com.example.quera.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Assignment {
-    public static ArrayList<Assignment> allAssignments = new ArrayList<>();
+    public static HashMap<String, Assignment> allAssignments = new HashMap<>();
+    protected String id;
     protected String name;
-    protected Course className;
+    protected String className;
     protected ArrayList<Answer> answers = new ArrayList<>();
 
-    public Assignment(String name, Course className) {
+    public Assignment(String name, String className) {
+        this.id = name + className;
         this.name = name;
         this.className = className;
-        allAssignments.add(this);
+        allAssignments.put(id, this);
     }
 
     public String getName() {
@@ -22,19 +25,19 @@ public class Assignment {
         return this.answers;
     }
 
-    public static ArrayList<Assignment> getAssignments() {
-        return allAssignments;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public static Assignment getAssignmentByName(String assignmentName) {
-        for (Assignment assignment : allAssignments)
-            if (assignment.getName().equals(assignmentName)) {
-                return assignment;
-            }
-        return null;
+        return allAssignments.get(assignmentName);
+    }
+
+    public static HashMap<String, Assignment> getAllAssignments() {
+        return allAssignments;
+    }
+
+    public static void setAllAssignments(HashMap<String, Assignment> allAssignments) {
+        Assignment.allAssignments = allAssignments;
     }
 }

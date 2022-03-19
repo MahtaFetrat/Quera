@@ -22,7 +22,7 @@ public class Professor extends User {
     }
 
     public void newAssignment(String name, Course currentClass) {
-        Assignment assignment = new Assignment(name, currentClass);
+        Assignment assignment = new Assignment(name, currentClass.name);
         assignments.add(assignment);
     }
 
