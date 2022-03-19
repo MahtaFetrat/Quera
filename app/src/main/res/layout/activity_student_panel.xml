@@ -73,7 +73,7 @@
         app:layout_constraintVertical_bias="0.775" />
 
     <Button
-        android:id="@+id/confirmClassButton"
+        android:id="@+id/studentPanelConfirmClassButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/confirmClassButton"
@@ -106,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmClassButton"
+        app:layout_constraintTop_toBottomOf="@+id/studentPanelConfirmClassButton"
         app:layout_constraintVertical_bias="0.529" />
 
     <TextView

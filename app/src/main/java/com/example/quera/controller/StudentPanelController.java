@@ -26,6 +26,6 @@ public class StudentPanelController {
     }
 
     public Course getStudentClassByName(Student student, String className) {
-        return Course.allClasses.get(className);
+        return Course.getAllClasses().get(className);
     }
 }

@@ -32,8 +32,8 @@ public class MainActivity extends BaseActivity {
 
         String studentsDataString = sharedPref.getString(getString(R.string.saved_students_key), DataController.getStudentsDataString());
         String professorsDataString = sharedPref.getString(getString(R.string.saved_professors_key), DataController.getProfessorsDataString());
-        String classesDataString = sharedPref.getString(String.valueOf(R.string.saved_classes_key), DataController.getClassesDataString());
-        String assignmentsDataString = sharedPref.getString(String.valueOf(R.string.saved_assignments_key), DataController.getAssignmentsDataString());
+        String classesDataString = sharedPref.getString(getString(R.string.saved_classes_key), DataController.getClassesDataString());
+        String assignmentsDataString = sharedPref.getString(getString(R.string.saved_assignments_key), DataController.getAssignmentsDataString());
 
         DataController.readStudentsDataString(studentsDataString);
         DataController.readProfessorsDataString(professorsDataString);
