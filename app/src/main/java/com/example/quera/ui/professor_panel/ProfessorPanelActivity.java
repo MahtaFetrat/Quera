@@ -16,7 +16,10 @@ import com.example.quera.controller.DataController;
 import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
+<<<<<<< Updated upstream
 import com.example.quera.ui.student_panel.StudentClassActivity;
+=======
+>>>>>>> Stashed changes
 import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
 
 public class ProfessorPanelActivity extends BaseActivity {
