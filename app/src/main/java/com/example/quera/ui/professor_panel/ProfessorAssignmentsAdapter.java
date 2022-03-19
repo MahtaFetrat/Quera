@@ -28,7 +28,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
     @SuppressLint("StaticFieldLeak")
     protected static Context context;
 
-    public ProfessorAssignmentsAdapter(ProfessorClassActivity ct, Object[] assignmentNames) {
+    public ProfessorAssignmentsAdapter(ProfessorClassActivity ct, String[] assignmentNames) {
         context = ct;
         assignments = (String[]) assignmentNames;
     }
