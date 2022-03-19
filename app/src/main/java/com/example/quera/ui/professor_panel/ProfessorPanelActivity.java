@@ -60,7 +60,6 @@ public class ProfessorPanelActivity extends BaseActivity {
                 if (c == null) {
                     messageTextView.setTextColor(Color.RED);
                 } else {
-                    Toast.makeText(ProfessorPanelActivity.this, "reched here", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ProfessorPanelActivity.this, ProfessorClassActivity.class);
                     intent.putExtra("username", professor.getUsername());
                     intent.putExtra("className", c.getName());
