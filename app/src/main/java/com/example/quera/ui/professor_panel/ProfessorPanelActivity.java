@@ -43,7 +43,7 @@ public class ProfessorPanelActivity extends BaseActivity {
         classesTextView = findViewById(R.id.professorClassesTextView);
         createClassButton = findViewById(R.id.createClass);
         classNameEditText = findViewById(R.id.classNameProfessorPanel);
-        confirmButton = findViewById(R.id.proffesorPanelConfirmClassButton);
+        confirmButton = findViewById(R.id.professorEnterClassConfirm);
         messageTextView = findViewById(R.id.professorPanelMessage);
 
         createClassButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class ProfessorPanelActivity extends BaseActivity {
             if (c == null) {
                 messageTextView.setTextColor(Color.RED);
             } else {
-                Intent intent = new Intent(ProfessorPanelActivity.this, ProfessorAssignmentsFragment.class);
+                Intent intent = new Intent(ProfessorPanelActivity.this, ProfessorClassActivity.class);
                 intent.putExtra("username", professor.getUsername());
                 intent.putExtra("className", c.getName());
                 startActivity(intent);
