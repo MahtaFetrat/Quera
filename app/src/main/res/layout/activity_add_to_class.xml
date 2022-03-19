@@ -79,7 +79,7 @@
             app:layout_constraintVertical_bias="0.868" />
 
         <Button
-            android:id="@+id/confirmClassButton"
+            android:id="@+id/addToClassConfirmButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/confirmClassButton"

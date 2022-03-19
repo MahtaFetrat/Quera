@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Course {
-    public static HashMap<String, Course> allClasses = new HashMap<>();
+    private static HashMap<String, Course> allClasses = new HashMap<>();
     protected String name;
     protected Professor professor;
     protected ArrayList<String> assignmentIds = new ArrayList<>();

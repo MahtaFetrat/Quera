@@ -36,7 +36,7 @@ public class StudentPanelActivity extends BaseActivity {
         nameTextView = findViewById(R.id.usernameStudentPanelTextView);
         classesTextView = findViewById(R.id.studentClassesTextView);
         addToClassButton = findViewById(R.id.addToClassButton);
-        confirmButton = findViewById(R.id.confirmClassButton);
+        confirmButton = findViewById(R.id.studentPanelConfirmClassButton);
         classNameEditText = findViewById(R.id.classNameStudentPanel);
         messageTextView = findViewById(R.id.studentPanelMessage);
 

@@ -34,6 +34,7 @@ public class AddToClassActivity extends BaseActivity {
         classesToAddTextView = findViewById(R.id.allClassseToAddTextVeiw);
         classNameEditText = findViewById(R.id.classNameAddToClass);
         messageTextView = findViewById(R.id.addToClassMessage);
+        confirmButton = findViewById(R.id.addToClassConfirmButton);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.quera.BaseActivity;
@@ -16,10 +17,7 @@ import com.example.quera.controller.DataController;
 import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
-<<<<<<< Updated upstream
-import com.example.quera.ui.student_panel.StudentClassActivity;
-=======
->>>>>>> Stashed changes
+
 import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
 
 public class ProfessorPanelActivity extends BaseActivity {
@@ -48,15 +46,18 @@ public class ProfessorPanelActivity extends BaseActivity {
         confirmButton = findViewById(R.id.proffesorPanelConfirmClassButton);
         messageTextView = findViewById(R.id.professorPanelMessage);
 
-        createClassButton.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfessorPanelActivity.this, CreateClassActivity.class);
-            intent.putExtra("username", professor.getUsername());
-            startActivity(intent);
+        createClassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfessorPanelActivity.this, CreateClassActivity.class);
+                intent.putExtra("username", professor.getUsername());
+                startActivity(intent);
+            }
         });
 
         confirmButton.setOnClickListener(view -> {
-            Course c;
-            if ((c = controller.getProfessorClassByName(professor, classNameEditText.getText().toString())) == null) {
+            Course c = controller.getProfessorClassByName(professor, classNameEditText.getText().toString());
+            if (c == null) {
                 messageTextView.setTextColor(Color.RED);
             } else {
                 Intent intent = new Intent(ProfessorPanelActivity.this, ProfessorAssignmentsFragment.class);
