@@ -1,9 +1,11 @@
 package com.example.quera.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class Class {
-    public static ArrayList<Class> allClasses = new ArrayList<>();
+    public static HashMap<String, Class> allClasses = new HashMap<>();
     protected String name;
     protected Professor professor;
     protected ArrayList<Assignment> assignments = new ArrayList<>();
@@ -29,4 +31,10 @@ public class Class {
     public void addAssignment(Assignment assignment) {
         this.assignments.add(assignment);
     }
+
+    public static HashMap<String, Class> getAllClasses() {
+        return allClasses;
+    }
+
+    // TODO: check for class name uniqueness
 }

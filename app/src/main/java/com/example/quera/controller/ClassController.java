@@ -8,27 +8,17 @@ import com.example.quera.model.User;
 
 public class ClassController {
     public Class getUserClassByName(User user, String className) {
-        for (Class c :
-                user.getClasses()) {
-            if (c.getName().equals(className))
-                return c;
-        }
-        return null;
+        return Class.allClasses.get(className);
     }
 
     public Class getClassByName(String name) {
-        for (Class c :
-                Class.allClasses) {
-            if (c.getName().equals(name))
-                return c;
-        }
-        return null;
+        return Class.getAllClasses().get(name);
     }
 
-    public String getClassAssignments(Class clas) {
+    public String getClassAssignments(Class c) {
         StringBuilder assignments = new StringBuilder("");
         for (Assignment assignment :
-                clas.getAssignments()) {
+                c.getAssignments()) {
             assignments.append(assignment.getName());
         }
         return assignments.toString();

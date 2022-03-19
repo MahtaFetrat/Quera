@@ -1,19 +1,17 @@
 package com.example.quera.controller;
 
-import android.util.Log;
-
+import com.example.quera.model.Answer;
+import com.example.quera.model.Assignment;
 import com.example.quera.model.Professor;
 import com.example.quera.model.Student;
 import com.example.quera.model.User;
+import com.example.quera.model.Class;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 public class DataController {
     private User currentUser;
@@ -64,6 +62,10 @@ public class DataController {
         return new Gson().toJson(Professor.getAllProfessors());
     }
 
+    public String getClassesDataString() {
+        return new Gson().toJson(Class.getAllClasses());
+    }
+
     public void readStudentsDataString(String dataString) {
         Type type = new TypeToken<HashMap<String, Student>>(){}.getType();
         Student.setAllStudents(new Gson().fromJson(dataString, type));
@@ -71,7 +73,13 @@ public class DataController {
     }
 
     public void readProfessorsDataString(String dataString) {
-        Type type = new TypeToken<HashMap<String, Professor>>(){}.getType();
+        Type type = new TypeToken<HashMap<String, Professor>>() {}.getType();
+        Professor.setAllProfessors(new Gson().fromJson(dataString, type));
+        // TODO: read Class objects by some key
+    }
+
+    public void readClassesDataString(String dataString) {
+        Type type = new TypeToken<HashMap<String, Class>>() {}.getType();
         Professor.setAllProfessors(new Gson().fromJson(dataString, type));
         // TODO: read Class objects by some key
     }

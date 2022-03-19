@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity {
 
         editor.putString(getString(R.string.saved_students_key), dataController.getStudentsDataString());
         editor.putString(getString(R.string.saved_professors_key), dataController.getProfessorsDataString());
+        editor.putString(getString(R.string.saved_classes_key), dataController.getClassesDataString());
 
         editor.apply();
     }
@@ -61,9 +62,11 @@ public class MainActivity extends BaseActivity {
 
         String studentsDataString = sharedPref.getString(getString(R.string.saved_students_key), dataController.getStudentsDataString());
         String professorsDataString = sharedPref.getString(getString(R.string.saved_professors_key), dataController.getProfessorsDataString());
+        String classesDataString = sharedPref.getString(String.valueOf(R.string.saved_classes_key), dataController.getClassesDataString());
 
         dataController.readStudentsDataString(studentsDataString);
         dataController.readProfessorsDataString(professorsDataString);
+        dataController.readClassesDataString(classesDataString);
     }
 
     @Override

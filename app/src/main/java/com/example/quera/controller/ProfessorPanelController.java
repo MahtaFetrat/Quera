@@ -7,16 +7,8 @@ import com.example.quera.model.Class;
 import java.util.ArrayList;
 
 public class ProfessorPanelController {
-    public String getClassesName(ArrayList<Class> classes){
-        StringBuilder names = new StringBuilder();
-        for (Class c : classes) {
-            names.append(c.getName());
-        }
-        return names.toString();
-    }
-
     public String getProfessorClassNames(Professor professor){
-        return this.getClassesName(professor.getClasses());
+        return String.join(", ", professor.getClassNames());
     }
 
     public Professor getProfessorByUsername(String username) {
@@ -30,17 +22,12 @@ public class ProfessorPanelController {
     }
 
     public Class getProfessorClassByName(Professor professor, String className) {
-        for (Class c :
-                professor.getClasses()) {
-            if (className.equals(c.getName()))
-                return c;
-        }
-        return null;
+        return Class.allClasses.get(className);
     }
 
     public void createClass (String name, Professor professor) {
         Class c = new Class(name, professor);
-        professor.getClasses().add(c);
-        Class.allClasses.add(c);
+        professor.getClassNames().add(c.getName());
+        Class.allClasses.put(c.getName(), c);
     }
 }
