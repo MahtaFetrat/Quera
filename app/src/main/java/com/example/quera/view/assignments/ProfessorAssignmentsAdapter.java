@@ -2,6 +2,7 @@ package com.example.quera.view.assignments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,8 @@ import java.util.Objects;
 
 public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorAssignmentsAdapter.ProfessorAssignmentsViewHolder> {
     protected String[] assignments;
-    protected Context context;
+    @SuppressLint("StaticFieldLeak")
+    protected static Context context;
 
     public ProfessorAssignmentsAdapter(ProfessorAssignmentsFragment ct, Object[] assignmentNames) {
         context = ct;
@@ -48,6 +50,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
     public static class ProfessorAssignmentsViewHolder extends RecyclerView.ViewHolder {
         protected EditText assignmentNameText;
         protected Button changeAssignmentName;
+        protected Button studentAnswers;
         protected String nameBeforeChange;
 
         @SuppressLint("SetTextI18n")
@@ -56,6 +59,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
 
             assignmentNameText = itemView.findViewById(R.id.assignmentNameID);
             changeAssignmentName = itemView.findViewById(R.id.changeNameID);
+            studentAnswers = itemView.findViewById(R.id.assignmentAnswersID);
 
             changeAssignmentName.setOnClickListener(view -> {
                 assignmentNameText.setEnabled(!assignmentNameText.isEnabled());
@@ -67,6 +71,11 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
                     String name = assignmentNameText.getText().toString();
                     Objects.requireNonNull(Assignment.getAssignmentByName(nameBeforeChange)).setName(name);
                 }
+            });
+
+            studentAnswers.setOnClickListener(view -> {
+                Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersFragment.class);
+                context.startActivity(intent);
             });
         }
     }
