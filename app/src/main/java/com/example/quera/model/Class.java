@@ -3,10 +3,10 @@ package com.example.quera.model;
 import java.util.ArrayList;
 
 public class Class {
-    public static ArrayList<Class> allClasses;
+    public static ArrayList<Class> allClasses = new ArrayList<>();
     protected String name;
     protected Professor professor;
-    protected ArrayList<Assignment> assignments;
+    protected ArrayList<Assignment> assignments = new ArrayList<>();
     
     public Class(String name, Professor professor) {
         this.name = name;

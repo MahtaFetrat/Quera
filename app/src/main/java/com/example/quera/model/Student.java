@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Student extends User {
     public static Student loggedStudent;
     protected String studentNumber;
-    protected ArrayList<Assignment> assignments;
-    protected ArrayList<Answer> answers;
+    protected ArrayList<Assignment> assignments = new ArrayList<>();
+    protected ArrayList<Answer> answers = new ArrayList<>();
     private static HashMap<String, Student> allStudents = new HashMap<>();
 
     public Student(String username, String password, String firstname, String lastname, String studentNumber) {

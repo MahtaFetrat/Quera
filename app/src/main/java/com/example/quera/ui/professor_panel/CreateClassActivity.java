@@ -46,11 +46,11 @@ public class CreateClassActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String className;
-                if (MainActivity.classController.getClassByName((className = classNameEditText.getText().toString())) == null) {
+                if (MainActivity.classController.getClassByName(className = classNameEditText.getText().toString()) == null) {
+                    controller.createClass(className, professor);
+                } else {
                     nameIsUsedTextView.setTextColor(Color.RED);
                     nameIsUsedTextView.setVisibility(View.VISIBLE);
-                } else {
-                    controller.createClass(className, professor);
                 }
             }
         });
