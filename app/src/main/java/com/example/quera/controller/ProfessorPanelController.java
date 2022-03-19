@@ -21,7 +21,7 @@ public class ProfessorPanelController {
 
     public Professor getProfessorByUsername(String username) {
         for (Professor professor :
-                Professor.allProfessors) {
+                Professor.getAllProfessors().values()) {
             if (professor.getUsername().equals(username)) {
                 return professor;
             }

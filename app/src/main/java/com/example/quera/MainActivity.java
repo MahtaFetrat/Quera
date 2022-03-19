@@ -13,7 +13,6 @@ import com.example.quera.controller.DataController;
 import com.example.quera.controller.ProfessorPanelController;
 import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Professor;
-import com.example.quera.model.Student;
 import com.example.quera.model.User;
 import com.example.quera.ui.professor_panel.ProfessorPanelActivity;
 import com.example.quera.ui.student_panel.StudentPanelActivity;
@@ -31,22 +30,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         readData();
-
-        for (User user: User.getAllUsers().values()){
-            Log.d("debmydeb", String.valueOf(user.instanceofStudent()));
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        /*TODO: To be replaced with conditional navigation to dashboard/login fragment based on sign in information loaded at startup
-           read https://developer.android.com/guide/navigation/navigation-conditional for more*/
         if (dataController.getCurrentUser() == null) {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
-            startActivity(new Intent(this, (dataController.getCurrentUser().instanceofProfessor() ? ProfessorPanelActivity.class : StudentPanelActivity.class)));
+            startActivity(new Intent(this, (dataController.getCurrentUser() instanceof Professor ? ProfessorPanelActivity.class : StudentPanelActivity.class)));
         }
     }
 
@@ -54,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putString(getString(R.string.saved_users_key), dataController.getUsersDataString());
+        editor.putString(getString(R.string.saved_students_key), dataController.getStudentsDataString());
+        editor.putString(getString(R.string.saved_professors_key), dataController.getProfessorsDataString());
 
         editor.apply();
     }
@@ -62,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
     private void readData() {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
-        String usersDataString = sharedPref.getString(getString(R.string.saved_users_key), dataController.getUsersDataString());
-        dataController.readUsersDataString(usersDataString);
+        String studentsDataString = sharedPref.getString(getString(R.string.saved_students_key), dataController.getStudentsDataString());
+        String professorsDataString = sharedPref.getString(getString(R.string.saved_professors_key), dataController.getProfessorsDataString());
+
+        dataController.readStudentsDataString(studentsDataString);
+        dataController.readProfessorsDataString(professorsDataString);
     }
 
     @Override

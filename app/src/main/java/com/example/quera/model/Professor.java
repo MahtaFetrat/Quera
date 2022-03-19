@@ -1,14 +1,15 @@
 package com.example.quera.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Professor extends User {
-    public static ArrayList<Professor> allProfessors = new ArrayList<>();
     protected String university;
     protected ArrayList<Assignment> assignments;
+    private static HashMap<String, Professor> allProfessors = new HashMap<>();
 
     public Professor(String username, String password, String firstname, String lastname, String university) {
-        super(username, password, firstname, lastname, UserType.PROFESSOR);
+        super(username, password, firstname, lastname);
         this.university = university;
     }
 
@@ -31,5 +32,13 @@ public class Professor extends User {
 
     public void gradingAnswer(Answer answer, float grade) {
         answer.setGrade(grade);
+    }
+
+    public static HashMap<String, Professor> getAllProfessors() {
+        return allProfessors;
+    }
+
+    public static void setAllProfessors(HashMap<String, Professor> allProfessors) {
+        Professor.allProfessors = allProfessors;
     }
 }

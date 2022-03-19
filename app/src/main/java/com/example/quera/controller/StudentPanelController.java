@@ -30,7 +30,7 @@ public class StudentPanelController {
 
     public Student getStudentByUsername(String username) {
         for (Student s :
-                Student.allStudents) {
+                Student.getAllStudents().values()) {
             if (s.getUsername().equals(username)) {
                 return s;
             }

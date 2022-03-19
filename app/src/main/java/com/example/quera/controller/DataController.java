@@ -1,17 +1,23 @@
 package com.example.quera.controller;
 
+import android.util.Log;
+
 import com.example.quera.model.Professor;
 import com.example.quera.model.Student;
 import com.example.quera.model.User;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class DataController {
     private User currentUser;
+    private Gson gson;
 
     public User login(String username, String password) {
         User user = User.getAllUsers().get(username);
@@ -29,7 +35,7 @@ public class DataController {
     public Student signupStudent(String username, String password, String firstname, String lastname, String studentNumber) {
         Student student = new Student(username, password, firstname, lastname, studentNumber);
         if (!User.isUsernameAvailable(username)){
-            User.getAllUsers().put(username, student);
+            Student.getAllStudents().put(username, student);
             currentUser = student;
             return student;
         }
@@ -39,7 +45,7 @@ public class DataController {
     public Professor signupInstructor(String username, String password, String firstname, String lastname, String universityName) {
         Professor professor = new Professor(username, password, firstname, lastname, universityName);
         if (!User.isUsernameAvailable(username)){
-            User.getAllUsers().put(username, professor);
+            Professor.getAllProfessors().put(username, professor);
             currentUser = professor;
             return professor;
         }
@@ -50,13 +56,23 @@ public class DataController {
         return currentUser;
     }
 
-    public String getUsersDataString() {
-        return new Gson().toJson(User.getAllUsers());
+    public String getStudentsDataString() {
+        return new Gson().toJson(Student.getAllStudents());
     }
 
-    public void readUsersDataString(String dataString) {
-        Type type = new TypeToken<HashMap<String, User>>(){}.getType();
-        User.setAllUsers(new Gson().fromJson(dataString, type));
+    public String getProfessorsDataString() {
+        return new Gson().toJson(Professor.getAllProfessors());
+    }
+
+    public void readStudentsDataString(String dataString) {
+        Type type = new TypeToken<HashMap<String, Student>>(){}.getType();
+        Student.setAllStudents(new Gson().fromJson(dataString, type));
+        // TODO: read Class objects by some key
+    }
+
+    public void readProfessorsDataString(String dataString) {
+        Type type = new TypeToken<HashMap<String, Professor>>(){}.getType();
+        Professor.setAllProfessors(new Gson().fromJson(dataString, type));
         // TODO: read Class objects by some key
     }
 }
