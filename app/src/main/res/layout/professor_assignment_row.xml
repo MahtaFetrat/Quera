@@ -22,14 +22,13 @@
                 android:id="@+id/assignmentNameID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:autofillHints="Assignment name..."
+                android:inputType="text"
                 android:text="@string/assignment"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:autofillHints="Assignment name..."
-                android:inputType="text"
                 tools:ignore="LabelFor" />
 
             <Button
@@ -38,9 +37,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/change_name"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/assignmentNameID"
-                app:layout_constraintStart_toStartOf="@+id/assignmentNameID"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/assignmentNameID" />
+
+            <Button
+                android:id="@+id/assignmentAnswersID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/answers"
+                app:layout_constraintBottom_toTopOf="@+id/changeNameID"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
