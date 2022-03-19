@@ -12,8 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.quera.controller.DataController;
-import com.example.quera.model.Course;
-import com.example.quera.model.Professor;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -60,9 +58,6 @@ public class BaseActivity extends AppCompatActivity {
     private void writeData() {
         SharedPreferences sharedPref = this.getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-
-        int a = Professor.getAllProfessors().size();
-        int b = Course.getAllClasses().size();
 
         editor.putString(getString(R.string.saved_students_key), DataController.getStudentsDataString());
         editor.putString(getString(R.string.saved_professors_key), DataController.getProfessorsDataString());

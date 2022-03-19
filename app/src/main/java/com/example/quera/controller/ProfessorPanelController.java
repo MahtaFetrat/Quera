@@ -20,13 +20,12 @@ public class ProfessorPanelController {
     }
 
     public Course getProfessorClassByName(Professor professor, String className) {
-        return Course.allClasses.get(className);
+        return Course.getAllClasses().get(className);
     }
 
     public void createClass (String name, Professor professor) {
         Course c = new Course(name, professor);
         professor.getClassNames().add(c.getName());
-        Course.allClasses.put(c.getName(), c);
-        ;
+        Course.getAllClasses().put(c.getName(), c);
     }
 }

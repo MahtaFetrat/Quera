@@ -6,7 +6,7 @@ import com.example.quera.model.User;
 
 public class ClassController {
     public Course getUserClassByName(User user, String className) {
-        return Course.allClasses.get(className);
+        return Course.getAllClasses().get(className);
     }
 
     public static Course getClassByName(String name) {

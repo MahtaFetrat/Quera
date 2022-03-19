@@ -35,7 +35,7 @@ public class StudentClassActivity extends BaseActivity {
         classNameTextView = findViewById(R.id.classNameStudentClassTextView);
         professorNameTextView = findViewById(R.id.professorNameStudentClassTextView);
         assignmentsTextView = findViewById(R.id.studentClassAssignmentsTextView);
-        confirmButton = findViewById(R.id.confirmClassButton);
+        confirmButton = findViewById(R.id.studentPanelConfirmClassButton);
         assignmentEditText = findViewById(R.id.assignmentNameStudentClass);
         messageTextView = findViewById(R.id.studentClassMessage);
 
