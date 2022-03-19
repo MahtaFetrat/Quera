@@ -29,7 +29,7 @@ public class ProfessorAssignmentsFragment extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        course = ClassController.getClassByName(intent.getStringExtra("className"));
+        //course = ClassController.getClassByName(intent.getStringExtra("className"));
         classAssignments = course.getAssignments();
 
         for (Assignment assignment : classAssignments) {
