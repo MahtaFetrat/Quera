@@ -1,5 +1,6 @@
 package com.example.quera.ui.professor_panel;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,9 +26,9 @@ public class ProfessorClassActivity extends BaseActivity {
 
     protected Course course;
     protected Professor professor;
-    protected ArrayList<Assignment> classAssignments;
     protected ArrayList<String> assignmentsName = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +42,10 @@ public class ProfessorClassActivity extends BaseActivity {
 
         Intent intent = getIntent();
         course = controller.getClassByName(intent.getStringExtra("className"));
-        classAssignments = course.getAssignments();
-
-        for (Assignment assignment : classAssignments) {
-            assignmentsName.add(assignment.getId());
-        }
+        assignmentsName = course.getAssignmentIds();
 
         if (assignmentsName.size() != 0) {
-            ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray(new String[assignmentsName.size()]));
+            ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray(new String[0]));
             recyclerView.setAdapter(professorAssignmentsAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
@@ -74,7 +71,8 @@ public class ProfessorClassActivity extends BaseActivity {
             startActivity(getIntent());
         });
 
-        inputAssignmentName.setNegativeButton("Cancel", (dialog, whichButton) -> {});
+        inputAssignmentName.setNegativeButton("Cancel", (dialog, whichButton) -> {
+        });
 
         inputAssignmentName.show();
     }

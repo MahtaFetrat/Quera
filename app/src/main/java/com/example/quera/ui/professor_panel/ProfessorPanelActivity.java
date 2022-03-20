@@ -3,7 +3,6 @@ package com.example.quera.ui.professor_panel;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -42,13 +41,10 @@ public class ProfessorPanelActivity extends BaseActivity {
         confirmButton = findViewById(R.id.professorEnterClassConfirm);
         messageTextView = findViewById(R.id.professorPanelMessage);
 
-        createClassButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfessorPanelActivity.this, CreateClassActivity.class);
-                intent.putExtra("username", professor.getUsername());
-                startActivity(intent);
-            }
+        createClassButton.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfessorPanelActivity.this, CreateClassActivity.class);
+            intent.putExtra("username", professor.getUsername());
+            startActivity(intent);
         });
 
         confirmButton.setOnClickListener(view -> {
