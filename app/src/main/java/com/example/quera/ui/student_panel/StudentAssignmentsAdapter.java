@@ -12,19 +12,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.controller.ClassController;
+import com.example.quera.controller.StudentPanelController;
+import com.example.quera.model.Course;
 import com.example.quera.model.Student;
 
 public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssignmentsAdapter.StudentAssignmentsViewHolder> {
+    StudentPanelController studentController = MainActivity.studentPanelController;
+    ClassController classController = MainActivity.classController;
+
     protected String[] assignments, answers;
     protected Float[] grades;
     protected Context context;
+    public static Student student;
+    public static Course course;
 
-    public StudentAssignmentsAdapter(StudentClassActivity ct, Object[] assignmentNames, Object[] studentAnswers, Object[] studentGrades) {
+    public StudentAssignmentsAdapter(StudentClassActivity ct, String[] assignmentNames, String[] studentAnswers, Float[] studentGrades, String studentName, String className) {
         context = ct;
-        assignments = (String[]) assignmentNames;
-        answers = (String[]) studentAnswers;
-        grades = (Float[]) studentGrades;
+        assignments = assignmentNames;
+        answers = studentAnswers;
+        grades = studentGrades;
+        student = studentController.getStudentByUsername(studentName);
+        course = classController.getClassByName(className);
     }
 
     @NonNull
@@ -54,6 +65,9 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
     }
 
     public static class StudentAssignmentsViewHolder extends RecyclerView.ViewHolder {
+        StudentPanelController studentController = MainActivity.studentPanelController;
+        ClassController classController = MainActivity.classController;
+
         protected TextView assignmentNameText, studentGradeText;
         protected EditText studentAnswerText;
         protected Button answerButton;
@@ -75,7 +89,8 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
                     answerButton.setText("OK");
                 } else {
                     answerButton.setText("Change");
-                    String ans = studentAnswerText.getText().toString();
+                    String answer = studentAnswerText.getText().toString();
+                    student.answerAssignment(classController.getClassAssignmentByName(course, assignmentNameText.getText().toString()), answer);
                 }
             });
         }

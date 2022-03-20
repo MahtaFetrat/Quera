@@ -52,7 +52,7 @@ public class StudentClassActivity extends BaseActivity {
             }
         }
 
-        StudentAssignmentsAdapter studentAssignmentsAdapter = new StudentAssignmentsAdapter(this, assignmentsName.toArray(new String[0]), studentAnswers.toArray(new String[0]), studentGrades.toArray(new Float[0]));
+        StudentAssignmentsAdapter studentAssignmentsAdapter = new StudentAssignmentsAdapter(this, assignmentsName.toArray(new String[0]), studentAnswers.toArray(new String[0]), studentGrades.toArray(new Float[0]), intent.getStringExtra("username"), course.getName());
         recyclerView.setAdapter(studentAssignmentsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
