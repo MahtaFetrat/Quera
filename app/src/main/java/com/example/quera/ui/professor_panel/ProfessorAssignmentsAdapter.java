@@ -17,7 +17,6 @@ import com.example.quera.R;
 import com.example.quera.controller.ClassController;
 import com.example.quera.model.Assignment;
 import com.example.quera.view.assignments.AnswersFragment;
-import com.example.quera.view.assignments.ProfessorAssignmentsFragment;
 
 import java.util.Objects;
 
@@ -75,7 +74,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
                 } else {
                     changeAssignmentName.setText("Change name");
                     String name = assignmentNameText.getText().toString();
-                    Objects.requireNonNull(Assignment.getAssignmentByName(nameBeforeChange)).setName(name);
+                    Objects.requireNonNull(Assignment.getAssignmentById(nameBeforeChange)).setName(name);
                 }
             });
 

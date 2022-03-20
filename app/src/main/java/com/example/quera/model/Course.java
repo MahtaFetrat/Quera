@@ -40,10 +40,8 @@ public class Course {
 
     public ArrayList<Assignment> getAssignments() {
         ArrayList<Assignment> assignments = new ArrayList<>();
-        for (Assignment assignment : Assignment.getAllAssignments().values()) {
-            if (assignment.className == name){
-                assignments.add(assignment);
-            }
+        for (String assignmentId : assignmentIds) {
+            assignments.add(Assignment.getAssignmentById(assignmentId));
         }
         return assignments;
     }

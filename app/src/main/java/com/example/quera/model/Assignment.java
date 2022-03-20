@@ -29,8 +29,8 @@ public class Assignment {
         this.name = name;
     }
 
-    public static Assignment getAssignmentByName(String assignmentName) {
-        return allAssignments.get(assignmentName);
+    public static Assignment getAssignmentById(String assignmentId) {
+        return allAssignments.get(assignmentId);
     }
 
     public static HashMap<String, Assignment> getAllAssignments() {
