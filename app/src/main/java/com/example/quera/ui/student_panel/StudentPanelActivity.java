@@ -16,6 +16,7 @@ import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Student;
 import com.example.quera.model.Course;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class StudentPanelActivity extends BaseActivity {
 
@@ -24,7 +25,7 @@ public class StudentPanelActivity extends BaseActivity {
     Student student;
     TextView nameTextView;
     TextView classesTextView;
-    EditText classNameEditText;
+    TextInputEditText classNameEditText;
     Button confirmButton;
     FloatingActionButton addToClassButton;
     TextView messageTextView;

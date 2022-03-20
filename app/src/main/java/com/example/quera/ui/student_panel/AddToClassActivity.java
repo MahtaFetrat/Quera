@@ -52,6 +52,7 @@ public class AddToClassActivity extends BaseActivity {
                 } else {
                     controller.addStudentToClass(student, c);
                     classesToAddTextView.setText(controller.getClassNamesStudentCanJoin(student));
+                    finish();
                 }
             }
         });

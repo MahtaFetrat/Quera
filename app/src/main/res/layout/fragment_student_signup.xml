@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
+            android:singleLine="true"
             android:hint="@string/username_hint"
             tools:ignore="TextContrastCheck" />
 
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:hint="@string/firstname_hint"
+            android:singleLine="true"
             tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:hint="@string/lastname_hint"
+            android:singleLine="true"
             tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
+            android:singleLine="true"
             android:hint="@string/student_number_hint"
             tools:ignore="TextContrastCheck" />
 
@@ -77,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:hint="@string/password_hint"
+            android:singleLine="true"
             android:inputType="textPassword"
             android:maxLength="16"
             tools:ignore="TextContrastCheck" />
@@ -92,6 +97,7 @@
             android:id="@+id/signupStudentPasswordRepeatField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:layout_marginVertical="5dp"
             android:hint="@string/password_repeat_hint"
             android:inputType="textPassword"

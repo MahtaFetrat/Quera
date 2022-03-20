@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="Grade..."
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:text="@string/grade"
                 android:textAlignment="center" />
 

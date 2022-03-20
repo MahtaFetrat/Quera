@@ -16,6 +16,7 @@ import com.example.quera.model.Course;
 import com.example.quera.model.Professor;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class ProfessorPanelActivity extends BaseActivity {
 
@@ -24,7 +25,7 @@ public class ProfessorPanelActivity extends BaseActivity {
     Professor professor;
     TextView nameTextView;
     TextView classesTextView;
-    EditText classNameEditText;
+    TextInputEditText classNameEditText;
     FloatingActionButton createClassButton;
     Button confirmButton;
     TextView messageTextView;
