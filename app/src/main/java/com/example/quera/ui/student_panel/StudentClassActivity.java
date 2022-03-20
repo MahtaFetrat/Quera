@@ -35,7 +35,7 @@ public class StudentClassActivity extends BaseActivity {
         classNameTextView = findViewById(R.id.classNameStudentClassTextView);
         professorNameTextView = findViewById(R.id.professorNameStudentClassTextView);
         assignmentsTextView = findViewById(R.id.studentClassAssignmentsTextView);
-        confirmButton = findViewById(R.id.studentPanelConfirmClassButton);
+        confirmButton = findViewById(R.id.studentEnterAssignmentConfirm);
         assignmentEditText = findViewById(R.id.assignmentNameStudentClass);
         messageTextView = findViewById(R.id.studentClassMessage);
 
@@ -49,17 +49,14 @@ public class StudentClassActivity extends BaseActivity {
         professorNameTextView.setText(clas.getProfessor().getName());
         assignmentsTextView.setText(controller.getClassAssignments(this.clas));
 
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (controller.getClassAssignmentByName(clas, assignmentEditText.getText().toString()) == null) {
-                    messageTextView.setTextColor(Color.RED);
-                } else {
-                    /* TODO go to assignment page
-                    Intent intent = new Intent(...)
-                    ...
-                     */
-                }
+        confirmButton.setOnClickListener(view -> {
+            if (controller.getClassAssignmentByName(clas, assignmentEditText.getText().toString()) == null) {
+                messageTextView.setTextColor(Color.RED);
+            } else {
+                /* TODO go to assignment page
+                Intent intent = new Intent(...)
+                ...
+                 */
             }
         });
     }

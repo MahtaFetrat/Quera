@@ -68,7 +68,7 @@
             android:text="@string/className" />
 
         <Button
-            android:id="@+id/studentPanelConfirmClassButton"
+            android:id="@+id/studentEnterClassConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/confirmClassButton" />

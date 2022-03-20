@@ -13,22 +13,18 @@ import com.example.quera.model.Assignment;
 import java.util.ArrayList;
 
 public class AnswersActivity extends BaseActivity {
-    protected Assignment enteredAssignment;
-    protected ArrayList<Answer> classAnswer = new ArrayList<>();
-    protected ArrayList<String> answers = new ArrayList<>();
-    protected ArrayList<Float> grades = new ArrayList<>();
-    private RecyclerView recyclerView;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_answers);
 
-        recyclerView = findViewById(R.id.answerList);
-        enteredAssignment = Assignment.getAssignmentById(getIntent().getStringExtra("enteredAssignmentId"));
-        classAnswer = enteredAssignment.getAnswers();
+        RecyclerView recyclerView = findViewById(R.id.answerList);
+        Assignment enteredAssignment = Assignment.getAssignmentById(getIntent().getStringExtra("enteredAssignmentId"));
+        ArrayList<Answer> classAnswer = enteredAssignment.getAnswers();
 
+        ArrayList<String> answers = new ArrayList<>();
+        ArrayList<Float> grades = new ArrayList<>();
         for (Answer answer : classAnswer) {
             answers.add(answer.getAnswer());
             grades.add(answer.getGrade());

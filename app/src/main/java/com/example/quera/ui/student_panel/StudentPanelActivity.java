@@ -37,22 +37,19 @@ public class StudentPanelActivity extends BaseActivity {
         nameTextView = findViewById(R.id.usernameStudentPanelTextView);
         classesTextView = findViewById(R.id.studentClassesTextView);
         addToClassButton = findViewById(R.id.addToClassButton);
-        confirmButton = findViewById(R.id.studentPanelConfirmClassButton);
+        confirmButton = findViewById(R.id.studentEnterClassConfirm);
         classNameEditText = findViewById(R.id.classNameStudentPanel);
         messageTextView = findViewById(R.id.studentPanelMessage);
 
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Course c;
-                if ((c = controller.getStudentClassByName(student, classNameEditText.getText().toString())) == null) {
-                    messageTextView.setTextColor(Color.RED);
-                } else {
-                    Intent intent = new Intent(StudentPanelActivity.this, StudentClassActivity.class);
-                    intent.putExtra("username", student.getUsername());
-                    intent.putExtra("className", c.getName());
-                    startActivity(intent);
-                }
+        confirmButton.setOnClickListener(view -> {
+            Course c;
+            if ((c = controller.getStudentClassByName(student, classNameEditText.getText().toString())) == null) {
+                messageTextView.setTextColor(Color.RED);
+            } else {
+                Intent intent = new Intent(StudentPanelActivity.this, StudentClassActivity.class);
+                intent.putExtra("username", student.getUsername());
+                intent.putExtra("className", c.getName());
+                startActivity(intent);
             }
         });
 
