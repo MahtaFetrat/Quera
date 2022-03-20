@@ -17,6 +17,7 @@ import com.example.quera.R;
 import com.example.quera.controller.ClassController;
 import com.example.quera.model.Assignment;
 import com.example.quera.view.assignments.AnswersFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
 
@@ -54,7 +55,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
 
     public static class ProfessorAssignmentsViewHolder extends RecyclerView.ViewHolder {
         protected EditText assignmentNameText;
-        protected Button changeAssignmentName;
+        protected FloatingActionButton changeAssignmentName;
         protected Button studentAnswers;
         protected String nameBeforeChange;
 
@@ -70,9 +71,9 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
                 assignmentNameText.setEnabled(!assignmentNameText.isEnabled());
                 if (assignmentNameText.isEnabled()) {
                     nameBeforeChange = assignmentNameText.getText().toString();
-                    changeAssignmentName.setText("OK");
+                    changeAssignmentName.setImageResource(R.drawable.ic_baseline_done_24);
                 } else {
-                    changeAssignmentName.setText("Change name");
+                    changeAssignmentName.setImageResource(R.drawable.ic_baseline_edit_24);
                     String name = assignmentNameText.getText().toString();
                     Objects.requireNonNull(Assignment.getAssignmentById(nameBeforeChange)).setName(name);
                 }
