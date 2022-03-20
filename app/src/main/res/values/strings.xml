@@ -62,4 +62,6 @@
     <string name="saved_assignments_key">saved_assignments_key</string>
     <string name="professor_name">"Professor: "</string>
     <string name="class_name">"Class Title: "</string>
+    <string name="write_answer">Write your answer...</string>
+    <string name="saved_answers_key">saved_answers_key</string>
 </resources>

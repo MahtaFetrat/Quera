@@ -16,6 +16,8 @@ import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ClassController;
 import com.example.quera.controller.StudentPanelController;
+import com.example.quera.model.Answer;
+import com.example.quera.model.Assignment;
 import com.example.quera.model.Course;
 import com.example.quera.model.Student;
 
@@ -23,19 +25,16 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
     StudentPanelController studentController = MainActivity.studentPanelController;
     ClassController classController = MainActivity.classController;
 
-    protected String[] assignments, answers;
-    protected Float[] grades;
+    protected String[] assignments;
     protected Context context;
-    public static Student student;
-    public static Course course;
+    public Student student;
+    public Course course;
 
-    public StudentAssignmentsAdapter(StudentClassActivity ct, String[] assignmentNames, String[] studentAnswers, Float[] studentGrades, String studentName, String className) {
+    public StudentAssignmentsAdapter(StudentClassActivity ct, String[] assignmentNames, Student student, Course course) {
         context = ct;
         assignments = assignmentNames;
-        answers = studentAnswers;
-        grades = studentGrades;
-        student = studentController.getStudentByUsername(studentName);
-        course = classController.getClassByName(className);
+        this.student = student;
+        this.course = course;
     }
 
     @NonNull
@@ -50,13 +49,22 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull StudentAssignmentsViewHolder holder, int position) {
-        holder.assignmentNameText.setText(assignments[position]);
-        holder.studentAnswerText.setText(answers[position]);
-        if (answers[position].equals("")) {
-            holder.answerButton.setText("Answer");
+        Assignment assignment = Assignment.getAssignmentById(assignments[position]);
+        holder.assignmentNameText.setText(assignment.getName());
+        Answer answer = assignment.getStudentAnswer(student.getUsername());
+        if (answer == null) {
+            holder.answerButton.setText("Send");
         } else {
+            holder.studentAnswerText.setText(answer.getAnswer());
+            holder.studentGradeText.setText(String.valueOf(answer.getGrade()));
             holder.answerButton.setText("Change");
         }
+
+        holder.answerButton.setOnClickListener(view -> {
+            String studentAnswer = holder.studentAnswerText.getText().toString();
+            assignment.addAnswer(new Answer(student, assignment, studentAnswer));
+            notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -65,9 +73,6 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
     }
 
     public static class StudentAssignmentsViewHolder extends RecyclerView.ViewHolder {
-        StudentPanelController studentController = MainActivity.studentPanelController;
-        ClassController classController = MainActivity.classController;
-
         protected TextView assignmentNameText, studentGradeText;
         protected EditText studentAnswerText;
         protected Button answerButton;
@@ -76,23 +81,10 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
         public StudentAssignmentsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            assignmentNameText = itemView.findViewById(R.id.assignmentNameID);
+            assignmentNameText = itemView.findViewById(R.id.studentAssignmentNameID);
             studentGradeText = itemView.findViewById(R.id.answerGradeID);
-            studentAnswerText = itemView.findViewById(R.id.studentAnswerID);
-            answerButton = itemView.findViewById(R.id.answerID);
-
-            studentAnswerText.setEnabled(false);
-
-            answerButton.setOnClickListener(view -> {
-                studentAnswerText.setEnabled(!studentAnswerText.isEnabled());
-                if (studentAnswerText.isEnabled()) {
-                    answerButton.setText("OK");
-                } else {
-                    answerButton.setText("Change");
-                    String answer = studentAnswerText.getText().toString();
-                    student.answerAssignment(classController.getClassAssignmentByName(course, assignmentNameText.getText().toString()), answer);
-                }
-            });
+            studentAnswerText = itemView.findViewById(R.id.studentAnswerEditText);
+            answerButton = itemView.findViewById(R.id.answerButtonID);
         }
     }
 }

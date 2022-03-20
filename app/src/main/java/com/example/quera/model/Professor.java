@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 public class Professor extends User {
     protected String university;
-    protected ArrayList<Assignment> assignments = new ArrayList<>();
     private static HashMap<String, Professor> allProfessors = new HashMap<>();
 
     public Professor(String username, String password, String firstname, String lastname, String university) {
@@ -15,15 +14,6 @@ public class Professor extends User {
 
     public String getUniversity() {
         return university;
-    }
-
-    public ArrayList<Assignment> getAssignments() {
-        return assignments;
-    }
-
-    public void newAssignment(String name, Course currentClass) {
-        Assignment assignment = new Assignment(name, currentClass.name);
-        assignments.add(assignment);
     }
 
     public void changeAssignment(Assignment assignment, String name) {

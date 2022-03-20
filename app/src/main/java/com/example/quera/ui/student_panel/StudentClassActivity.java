@@ -2,6 +2,7 @@ package com.example.quera.ui.student_panel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,46 +15,35 @@ import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Answer;
 import com.example.quera.model.Assignment;
 import com.example.quera.model.Course;
+import com.example.quera.model.Student;
 
 import java.util.ArrayList;
 
 public class StudentClassActivity extends BaseActivity {
-    StudentPanelController studentController = MainActivity.studentPanelController;
     ClassController classController = MainActivity.classController;
 
-    protected Course course;
-    protected ArrayList<Assignment> classAssignments;
-    protected ArrayList<Answer> answers;
-    protected ArrayList<String> assignmentsName, studentAnswers = new ArrayList<>();
-    protected ArrayList<Float> studentGrades = new ArrayList<>();
+    protected ArrayList<String> assignmentIds = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_student_assignments);
+        setContentView(R.layout.activity_student_class);
 
-        RecyclerView recyclerView = findViewById(R.id.assignmentList);
+        TextView professorName = findViewById(R.id.studentClassActivityProfessorName);
+        TextView className = findViewById(R.id.studentClassActivityClassName);
+        RecyclerView recyclerView = findViewById(R.id.studentAssignmentsListView);
 
         Intent intent = getIntent();
-        course = classController.getClassByName(intent.getStringExtra("className"));
-        classAssignments = course.getAssignments();
-        assignmentsName = course.getAssignmentIds();
-        answers = studentController.getStudentByUsername(intent.getStringExtra("username")).getAnswers();
-        int i = 0;
-        for (Assignment assignment : classAssignments) {
-            if (answers.size() > 0 && answers.get(i).getAssignment().equals(assignment)) {
-                studentAnswers.add(answers.get(i).getAnswer());
-                studentGrades.add(answers.get(i).getGrade());
-                i++;
-            } else {
-                studentAnswers.add("");
-                studentGrades.add(0f);
-            }
-        }
+        Course course = classController.getClassByName(intent.getStringExtra("className"));
+        Student student = MainActivity.studentPanelController.getStudentByUsername(intent.getStringExtra("username"));
+        assignmentIds = course.getAssignmentIds();
 
-        StudentAssignmentsAdapter studentAssignmentsAdapter = new StudentAssignmentsAdapter(this, assignmentsName.toArray(new String[0]), studentAnswers.toArray(new String[0]), studentGrades.toArray(new Float[0]), intent.getStringExtra("username"), course.getName());
+        StudentAssignmentsAdapter studentAssignmentsAdapter = new StudentAssignmentsAdapter(this, assignmentIds.toArray(new String[0]), student, course);
         recyclerView.setAdapter(studentAssignmentsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        professorName.setText(professorName.getText().toString() + " " + course.getProfessor().getName());
+        className.setText(className.getText().toString() + " " + course.getName());
     }
 }

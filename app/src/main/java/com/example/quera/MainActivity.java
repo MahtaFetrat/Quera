@@ -34,11 +34,13 @@ public class MainActivity extends BaseActivity {
         String professorsDataString = sharedPref.getString(getString(R.string.saved_professors_key), DataController.getProfessorsDataString());
         String classesDataString = sharedPref.getString(getString(R.string.saved_classes_key), DataController.getClassesDataString());
         String assignmentsDataString = sharedPref.getString(getString(R.string.saved_assignments_key), DataController.getAssignmentsDataString());
+        String answersDataString = sharedPref.getString(getString(R.string.saved_answers_key), DataController.getAnswersDataString());
 
         DataController.readStudentsDataString(studentsDataString);
         DataController.readProfessorsDataString(professorsDataString);
         DataController.readClassesDataString(classesDataString);
         DataController.readAssignmentsDataString(assignmentsDataString);
+        DataController.readAnswersDataString(answersDataString);
     }
 
     @Override

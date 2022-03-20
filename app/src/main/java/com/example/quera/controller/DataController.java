@@ -1,5 +1,6 @@
 package com.example.quera.controller;
 
+import com.example.quera.model.Answer;
 import com.example.quera.model.Assignment;
 import com.example.quera.model.Professor;
 import com.example.quera.model.Student;
@@ -69,6 +70,11 @@ public class DataController {
         return new Gson().toJson(Assignment.getAllAssignments());
     }
 
+
+    public static String getAnswersDataString() {
+        return new Gson().toJson(Answer.getAllAnswers());
+    }
+
     public static void readStudentsDataString(String dataString) {
         Type type = new TypeToken<HashMap<String, Student>>(){}.getType();
         Student.setAllStudents(new Gson().fromJson(dataString, type));
@@ -90,6 +96,12 @@ public class DataController {
     public static void readAssignmentsDataString(String dataString) {
         Type type = new TypeToken<HashMap<String, Assignment>>() {}.getType();
         Assignment.setAllAssignments(new Gson().fromJson(dataString, type));
+        // TODO: read Class objects by some key
+    }
+
+    public static void readAnswersDataString(String dataString) {
+        Type type = new TypeToken<HashMap<String, Answer>>() {}.getType();
+        Answer.setAllAnswers(new Gson().fromJson(dataString, type));
         // TODO: read Class objects by some key
     }
 }

@@ -8,7 +8,7 @@ public class Assignment {
     protected String id;
     protected String name;
     protected String className;
-    protected ArrayList<Answer> answers = new ArrayList<>();
+    protected ArrayList<String> answerIds = new ArrayList<>();
 
     public Assignment(String name, String className) {
         this.id = buildId(name, className);
@@ -23,7 +23,11 @@ public class Assignment {
     }
 
     public ArrayList<Answer> getAnswers() {
-        return this.answers;
+        ArrayList<Answer> answers = new ArrayList<>();
+        for (String answerId : answerIds) {
+            answers.add(Answer.getAnswerById(answerId));
+        }
+        return answers;
     }
 
     public void setName(String name) {
@@ -48,5 +52,18 @@ public class Assignment {
 
     public String getId() {
         return id;
+    }
+
+    public Answer getStudentAnswer(String username) {
+        for (Answer answer : getAnswers()) {
+            if (answer.studentId == username) {
+                return answer;
+            }
+        }
+        return null;
+    }
+
+    public void addAnswer(Answer answer) {
+        answerIds.add(answer.id);
     }
 }

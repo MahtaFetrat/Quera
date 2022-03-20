@@ -59,7 +59,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
         public AnswersViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            answerText = itemView.findViewById(R.id.answerID);
+            answerText = itemView.findViewById(R.id.answerButtonID);
             gradeText = itemView.findViewById(R.id.gradeID);
             gradeButton = itemView.findViewById(R.id.setGradeID);
 
@@ -70,7 +70,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
                 } else {
                     gradeButton.setText("Grade");
                     float grade = Float.parseFloat(gradeText.getText().toString());
-                    Answer.getCurrentAnswer().setGrade(grade);
+//                    Answer.getCurrentAnswer().setGrade(grade);
                 }
             });
         }
