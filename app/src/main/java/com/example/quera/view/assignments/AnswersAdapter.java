@@ -20,9 +20,9 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
     protected float[] grades;
     protected Context context;
 
-    public AnswersAdapter(AnswersFragment ct, Object[] studentAnswers, Object[] studentGrades) {
+    public AnswersAdapter(AnswersActivity ct, String[] studentAnswers, String[] studentGrades) {
         context = ct;
-        answers = (String[]) studentAnswers;
+        answers = studentAnswers;
         grades = new float[studentGrades.length];
         for (int i = 0; i < studentGrades.length; i++) {
             grades[i] = Float.parseFloat(studentGrades[i].toString());

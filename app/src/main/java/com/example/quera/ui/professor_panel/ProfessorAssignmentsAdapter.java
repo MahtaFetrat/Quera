@@ -16,10 +16,8 @@ import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ClassController;
 import com.example.quera.model.Assignment;
-import com.example.quera.view.assignments.AnswersFragment;
+import com.example.quera.view.assignments.AnswersActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.Objects;
 
 public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorAssignmentsAdapter.ProfessorAssignmentsViewHolder> {
     ClassController controller = MainActivity.classController;
@@ -59,7 +57,8 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
         });
 
         holder.studentAnswers.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersFragment.class);
+            Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersActivity.class);
+            intent.putExtra("enteredAssignmentId", assignments[position]);
             context.startActivity(intent);
         });
     }
