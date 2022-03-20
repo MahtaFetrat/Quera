@@ -1,19 +1,17 @@
 package com.example.quera.ui.professor_panel;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ClassController;
@@ -74,22 +72,29 @@ import java.util.ArrayList;
 //    }
 //}
 
-public class ProfessorClassActivity extends AppCompatActivity implements GetNameDialog.GetNameDialogListener {
+public class ProfessorClassActivity extends AppCompatActivity {
     ClassController controller = MainActivity.classController;
 
     protected Course course;
+    protected Professor professor;
     protected ArrayList<Assignment> classAssignments;
     protected ArrayList<String> assignmentsName = new ArrayList<>();
     private RecyclerView recyclerView;
+    private TextView classNameTextView;
+    private TextView professorNameTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_professor_assignments);
+        setContentView(R.layout.activity_professor_class);
+
+        recyclerView = findViewById(R.id.ProfessorAssignmentsRecyclerView);
+        classNameTextView = findViewById(R.id.professorClassActivityClassName);
+        professorNameTextView = findViewById(R.id.professorClassActivityProfessorName);
+
 
         Intent intent = getIntent();
-
         course = controller.getClassByName(intent.getStringExtra("className"));
         classAssignments = course.getAssignments();
 
@@ -98,20 +103,39 @@ public class ProfessorClassActivity extends AppCompatActivity implements GetName
         }
 
         if (assignmentsName.size() != 0) {
-            ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray());
+            ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray(new String[assignmentsName.size()]));
             recyclerView.setAdapter(professorAssignmentsAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
+
+        professor = MainActivity.professorPanelController.getProfessorByUsername(intent.getStringExtra("username"));
+        professorNameTextView.setText(professorNameTextView.getText().toString() + " " + professor.getName());
+        classNameTextView.setText(classNameTextView.getText().toString() + " " + course.getName());
     }
 
     public void addAssignment(View view) {
-        GetNameDialog getNameDialog = new GetNameDialog();
-        getNameDialog.show(getSupportFragmentManager(), "getNameDialog");
-    }
+        AlertDialog.Builder inputAssignmentName = new AlertDialog.Builder(this);
 
-    @Override
-    public void applyName(String name) {
-        course.addAssignment(name);
-        assignmentsName.add(name);
+        inputAssignmentName.setTitle("Create new assignment");
+        inputAssignmentName.setMessage("Enter Assignment title");
+
+        final EditText nameInputField = new EditText(this);
+        inputAssignmentName.setView(nameInputField);
+
+        inputAssignmentName.setPositiveButton("Create", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String name = nameInputField.getText().toString();
+                Assignment assignment = new Assignment(name, course.getName());
+                finish();
+                startActivity(getIntent());
+            }
+        });
+
+        inputAssignmentName.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+
+        inputAssignmentName.show();
     }
 }

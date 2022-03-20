@@ -47,10 +47,10 @@
     <string name="createClass">create class</string>
     <string name="clas">class name</string>
     <string name="classNameUsed">this name is used</string>
-    <string name="classAssignments">assignments</string>
+    <string name="classAssignments">Assignments:</string>
     <string name="chooseAssignmentMessage">choose one of the assignments above.</string>
     <string name="CreateAssignment">create assignment</string>
-    <string name="textview">TextView</string>
+    <string name="your_classes">Your Classes:</string>
 
 
     <!-- SharedPreferences keys -->
@@ -60,5 +60,6 @@
     <string name="saved_classes_key">saved_classes_key</string>
     <string name="preference_file_key">com.example.quera</string>
     <string name="saved_assignments_key">saved_assignments_key</string>
-    <string name="your_classes">Your Classes:</string>
+    <string name="professor_name">"Professor: "</string>
+    <string name="class_name">"Class Title: "</string>
 </resources>

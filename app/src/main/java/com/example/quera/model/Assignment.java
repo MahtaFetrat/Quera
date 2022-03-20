@@ -15,6 +15,7 @@ public class Assignment {
         this.name = name;
         this.className = className;
         allAssignments.put(id, this);
+        Course.getAllClasses().get(className).assignmentIds.add(id);
     }
 
     public String getName() {
