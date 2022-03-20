@@ -51,6 +51,7 @@ public class AddToClassActivity extends BaseActivity {
                     messageTextView.setTextColor(Color.RED);
                 } else {
                     controller.addStudentToClass(student, c);
+                    classesToAddTextView.setText(controller.getClassNamesStudentCanJoin(student));
                 }
             }
         });
