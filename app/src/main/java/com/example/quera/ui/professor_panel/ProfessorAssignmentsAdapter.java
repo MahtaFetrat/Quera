@@ -16,6 +16,7 @@ import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ClassController;
 import com.example.quera.model.Assignment;
+import com.example.quera.model.Course;
 import com.example.quera.view.assignments.AnswersActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,11 +25,13 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
 
     protected String[] assignments;
     @SuppressLint("StaticFieldLeak")
-    protected static Context context;
+    public static Context context;
+    public static Course course;
 
-    public ProfessorAssignmentsAdapter(ProfessorClassActivity ct, String[] assignmentNames) {
+    public ProfessorAssignmentsAdapter(ProfessorClassActivity ct, String[] assignmentNames, String courseName) {
         context = ct;
         assignments = assignmentNames;
+        course = controller.getClassByName(courseName);
     }
 
     @NonNull

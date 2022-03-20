@@ -45,7 +45,7 @@ public class ProfessorClassActivity extends BaseActivity {
         assignmentsName = course.getAssignmentIds();
 
         if (assignmentsName.size() != 0) {
-            ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray(new String[0]));
+            ProfessorAssignmentsAdapter professorAssignmentsAdapter = new ProfessorAssignmentsAdapter(this, assignmentsName.toArray(new String[0]), course.getName());
             recyclerView.setAdapter(professorAssignmentsAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
