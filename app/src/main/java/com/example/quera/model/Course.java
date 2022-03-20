@@ -22,10 +22,6 @@ public class Course {
         return professor;
     }
 
-    public void addAssignment(String assignmentId) {
-        this.assignmentIds.add(assignmentId);
-    }
-
     public static HashMap<String, Course> getAllClasses() {
         return allClasses;
     }
@@ -36,13 +32,5 @@ public class Course {
 
     public ArrayList<String> getAssignmentIds() {
         return assignmentIds;
-    }
-
-    public ArrayList<Assignment> getAssignments() {
-        ArrayList<Assignment> assignments = new ArrayList<>();
-        for (String assignmentId : assignmentIds) {
-            assignments.add(Assignment.getAssignmentById(assignmentId));
-        }
-        return assignments;
     }
 }

@@ -40,7 +40,7 @@ public class AddToClassActivity extends BaseActivity {
         String username = intent.getStringExtra("username");
         student = controller.getStudentByUsername(username);
 
-        usernameTextView.setText(username);
+        usernameTextView.setText(student.getFullName());
         classesToAddTextView.setText(controller.getClassNamesStudentCanJoin(student));
 
         confirmButton.setOnClickListener(new View.OnClickListener() {

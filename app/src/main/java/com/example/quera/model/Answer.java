@@ -1,7 +1,5 @@
 package com.example.quera.model;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Answer {

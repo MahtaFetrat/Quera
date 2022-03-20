@@ -51,7 +51,7 @@ public class ProfessorClassActivity extends BaseActivity {
         }
 
         professor = MainActivity.professorPanelController.getProfessorByUsername(intent.getStringExtra("username"));
-        professorNameTextView.setText(professorNameTextView.getText().toString() + " " + professor.getName());
+        professorNameTextView.setText(professorNameTextView.getText().toString() + " " + professor.getFullName());
         classNameTextView.setText(classNameTextView.getText().toString() + " " + course.getName());
     }
 

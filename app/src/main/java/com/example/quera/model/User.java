@@ -25,19 +25,7 @@ public class User {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getName() {
+    public String getFullName() {
         return firstname + " " + lastname;
     }
     

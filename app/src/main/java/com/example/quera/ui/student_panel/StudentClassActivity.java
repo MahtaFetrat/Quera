@@ -11,9 +11,6 @@ import com.example.quera.BaseActivity;
 import com.example.quera.controller.ClassController;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
-import com.example.quera.controller.StudentPanelController;
-import com.example.quera.model.Answer;
-import com.example.quera.model.Assignment;
 import com.example.quera.model.Course;
 import com.example.quera.model.Student;
 
@@ -43,7 +40,7 @@ public class StudentClassActivity extends BaseActivity {
         recyclerView.setAdapter(studentAssignmentsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        professorName.setText(professorName.getText().toString() + " " + course.getProfessor().getName());
+        professorName.setText(professorName.getText().toString() + " " + course.getProfessor().getFullName());
         className.setText(className.getText().toString() + " " + course.getName());
     }
 }

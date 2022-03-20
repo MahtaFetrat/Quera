@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.quera.BaseActivity;
@@ -65,7 +64,7 @@ public class ProfessorPanelActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         professor = (Professor) DataController.getCurrentUser();
-        nameTextView.setText(professor.getUsername());
+        nameTextView.setText(professor.getFullName());
         classesTextView.setText(controller.getProfessorClassNames(professor));
     }
 }

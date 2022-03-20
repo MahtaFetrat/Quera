@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.quera.BaseActivity;
@@ -68,7 +67,7 @@ public class StudentPanelActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         student = (Student) DataController.getCurrentUser();
-        nameTextView.setText(student.getUsername());
+        nameTextView.setText(student.getFullName());
         classesTextView.setText(controller.getStudentClassNames(this.student));
     }
 }

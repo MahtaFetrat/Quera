@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quera.R;
 import com.example.quera.model.Answer;
-import com.example.quera.model.Student;
 
 public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersViewHolder> {
     protected Answer[] answers;
@@ -39,7 +38,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
     public void onBindViewHolder(@NonNull AnswersViewHolder holder, int position) {
         holder.answerText.setText(answers[position].getAnswer());
         holder.gradeText.setText(String.valueOf(answers[position].getGrade()));
-        holder.studentNameText.setText(answers[position].getStudent().getName());
+        holder.studentNameText.setText(answers[position].getStudent().getFullName());
 
         holder.gradeButton.setOnClickListener(view -> {
             holder.gradeText.setEnabled(!holder.gradeText.isEnabled());

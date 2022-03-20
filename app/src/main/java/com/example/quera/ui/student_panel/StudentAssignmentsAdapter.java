@@ -12,18 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quera.MainActivity;
 import com.example.quera.R;
-import com.example.quera.controller.ClassController;
-import com.example.quera.controller.StudentPanelController;
 import com.example.quera.model.Answer;
 import com.example.quera.model.Assignment;
 import com.example.quera.model.Course;
 import com.example.quera.model.Student;
 
 public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssignmentsAdapter.StudentAssignmentsViewHolder> {
-    StudentPanelController studentController = MainActivity.studentPanelController;
-    ClassController classController = MainActivity.classController;
 
     protected String[] assignments;
     protected Context context;

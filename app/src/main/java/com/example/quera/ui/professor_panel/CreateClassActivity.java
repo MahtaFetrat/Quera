@@ -39,7 +39,7 @@ public class CreateClassActivity extends BaseActivity {
 
         professor = controller.getProfessorByUsername(username);
 
-        usernameTextView.setText(username);
+        usernameTextView.setText(professor.getFullName());
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override

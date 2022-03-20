@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.student_panel.AddToClassActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="50dp"
-    android:orientation="vertical"
-    tools:context=".ui.student_panel.AddToClassActivity">
+    android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/usernameAddToClassTextView"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/classesToAddTextView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/classesToAddTitle" />
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:orientation="vertical" >
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/usernameAddToClassTextView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="" />
 
-            <TextView
-                android:id="@+id/allClassseToAddTextVeiw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="" />
-        </LinearLayout>
-    </ScrollView>
-
-    <TextView
-        android:id="@+id/addToClassMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/wrongClass"
-        android:visibility="visible" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/classNameAddToClass"
+        <TextView
+            android:id="@+id/classesToAddTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:hint="@string/className"
-            android:singleLine="true"
-            tools:ignore="TextContrastCheck" />
+            android:text="@string/classesToAddTitle" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/allClassseToAddTextVeiw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/addToClassMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/wrongClass"
+            android:visibility="visible" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/classNameAddToClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:hint="@string/className"
+                android:singleLine="true"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/addToClassConfirmButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/confirmClassButton" />
+        <Button
+            android:id="@+id/addToClassConfirmButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirmClassButton" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
