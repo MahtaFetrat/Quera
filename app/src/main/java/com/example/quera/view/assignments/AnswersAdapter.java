@@ -14,19 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quera.R;
 import com.example.quera.model.Answer;
+import com.example.quera.model.Student;
 
 public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersViewHolder> {
-    protected String[] answers;
-    protected float[] grades;
+    protected Answer[] answers;
     protected Context context;
 
-    public AnswersAdapter(AnswersActivity ct, String[] studentAnswers, String[] studentGrades) {
+    public AnswersAdapter(AnswersActivity ct, Answer[] studentAnswers) {
         context = ct;
         answers = studentAnswers;
-        grades = new float[studentGrades.length];
-        for (int i = 0; i < studentGrades.length; i++) {
-            grades[i] = Float.parseFloat(studentGrades[i].toString());
-        }
     }
 
     @NonNull
@@ -41,8 +37,20 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AnswersViewHolder holder, int position) {
-        holder.answerText.setText(answers[position]);
-        holder.gradeText.setText(Float.toString(grades[position]));
+        holder.answerText.setText(answers[position].getAnswer());
+        holder.gradeText.setText(String.valueOf(answers[position].getGrade()));
+        holder.studentNameText.setText(answers[position].getStudent().getName());
+
+        holder.gradeButton.setOnClickListener(view -> {
+            holder.gradeText.setEnabled(!holder.gradeText.isEnabled());
+            if (holder.gradeText.isEnabled()) {
+                holder.gradeButton.setText("OK");
+            } else {
+                holder.gradeButton.setText("Grade");
+                float grade = Float.parseFloat(holder.gradeText.getText().toString());
+                answers[position].setGrade(grade);
+            }
+        });
     }
 
     @Override
@@ -53,26 +61,17 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
     public static class AnswersViewHolder extends RecyclerView.ViewHolder {
         protected TextView answerText;
         protected EditText gradeText;
+        protected TextView studentNameText;
         protected Button gradeButton;
 
         @SuppressLint("SetTextI18n")
         public AnswersViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            answerText = itemView.findViewById(R.id.answerButtonID);
+            studentNameText = itemView.findViewById(R.id.studentNameID);
+            answerText = itemView.findViewById(R.id.viewStudentAnswerID);
             gradeText = itemView.findViewById(R.id.gradeID);
             gradeButton = itemView.findViewById(R.id.setGradeID);
-
-            gradeButton.setOnClickListener(view -> {
-                gradeText.setEnabled(!gradeText.isEnabled());
-                if (gradeText.isEnabled()) {
-                    gradeButton.setText("OK");
-                } else {
-                    gradeButton.setText("Grade");
-                    float grade = Float.parseFloat(gradeText.getText().toString());
-//                    Answer.getCurrentAnswer().setGrade(grade);
-                }
-            });
         }
     }
 }

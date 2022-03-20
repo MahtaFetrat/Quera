@@ -61,7 +61,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
 
         holder.studentAnswers.setOnClickListener(view -> {
             Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersActivity.class);
-            intent.putExtra("enteredAssignmentId", assignments[position]);
+            intent.putExtra("assignmentId", assignments[position]);
             context.startActivity(intent);
         });
     }

@@ -20,17 +20,10 @@ public class AnswersActivity extends BaseActivity {
         setContentView(R.layout.activity_answers);
 
         RecyclerView recyclerView = findViewById(R.id.answerList);
-        Assignment enteredAssignment = Assignment.getAssignmentById(getIntent().getStringExtra("enteredAssignmentId"));
-        ArrayList<Answer> classAnswer = enteredAssignment.getAnswers();
+        Assignment assignment = Assignment.getAssignmentById(getIntent().getStringExtra("assignmentId"));
+        ArrayList<Answer> answers = assignment.getAnswers();
 
-        ArrayList<String> answers = new ArrayList<>();
-        ArrayList<Float> grades = new ArrayList<>();
-        for (Answer answer : classAnswer) {
-            answers.add(answer.getAnswer());
-            grades.add(answer.getGrade());
-        }
-
-        AnswersAdapter answersAdapter = new AnswersAdapter(this, answers.toArray(new String[0]), grades.toArray(new String[0]));
+        AnswersAdapter answersAdapter = new AnswersAdapter(this, answers.toArray(new Answer[0]));
         recyclerView.setAdapter(answersAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
