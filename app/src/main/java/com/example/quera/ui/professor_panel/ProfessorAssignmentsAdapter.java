@@ -60,7 +60,7 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
         });
 
         holder.studentAnswers.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersActivity.class);
+            Intent intent = new Intent(context, AnswersActivity.class);
             intent.putExtra("assignmentId", assignments[position]);
             context.startActivity(intent);
         });

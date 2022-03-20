@@ -47,7 +47,7 @@ public class AddToClassActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Course c = controller.getStudentClassByName(student, classNameEditText.getText().toString());
-                if (!(controller.getClassNamesStudentCanJoin(student).contains(c.getName()))) {
+                if (c == null){
                     messageTextView.setTextColor(Color.RED);
                 } else {
                     controller.addStudentToClass(student, c);

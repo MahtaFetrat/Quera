@@ -36,9 +36,7 @@
         <activity
             android:name=".ui.professor_panel.ProfessorClassActivity"
             android:parentActivityName=".ui.professor_panel.ProfessorPanelActivity" />
-        <activity
-            android:name=".view.assignments.AnswersActivity"
-            android:parentActivityName=".ui.professor_panel.ProfessorClassActivity" />
+        <activity android:name=".view.assignments.AnswersActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

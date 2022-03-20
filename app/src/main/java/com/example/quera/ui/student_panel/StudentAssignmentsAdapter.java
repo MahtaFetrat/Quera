@@ -62,8 +62,12 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
 
         holder.answerButton.setOnClickListener(view -> {
             String studentAnswer = holder.studentAnswerText.getText().toString();
-            assignment.addAnswer(new Answer(student, assignment, studentAnswer));
-            notifyDataSetChanged();
+            if (answer == null) {
+                assignment.addAnswer(new Answer(student, assignment, studentAnswer));
+            } else {
+                answer.setAnswer(studentAnswer);
+            }
+            notifyItemChanged(position);
         });
     }
 
