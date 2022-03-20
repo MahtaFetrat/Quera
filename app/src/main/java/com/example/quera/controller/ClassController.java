@@ -18,6 +18,6 @@ public class ClassController {
     }
 
     public Assignment getClassAssignmentByName(Course clas, String assignment) {
-        return Assignment.getAllAssignments().get(Assignment.getId(clas.getName(), assignment));
+        return Assignment.getAllAssignments().get(Assignment.buildId(clas.getName(), assignment));
     }
 }

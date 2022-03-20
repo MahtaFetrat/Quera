@@ -7,10 +7,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quera.BaseActivity;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
 import com.example.quera.controller.ClassController;
@@ -20,7 +20,7 @@ import com.example.quera.model.Professor;
 
 import java.util.ArrayList;
 
-public class ProfessorClassActivity extends AppCompatActivity {
+public class ProfessorClassActivity extends BaseActivity {
     ClassController controller = MainActivity.classController;
 
     protected Course course;
@@ -44,7 +44,7 @@ public class ProfessorClassActivity extends AppCompatActivity {
         classAssignments = course.getAssignments();
 
         for (Assignment assignment : classAssignments) {
-            assignmentsName.add(assignment.getName());
+            assignmentsName.add(assignment.getId());
         }
 
         if (assignmentsName.size() != 0) {

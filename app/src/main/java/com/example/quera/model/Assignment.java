@@ -11,7 +11,7 @@ public class Assignment {
     protected ArrayList<Answer> answers = new ArrayList<>();
 
     public Assignment(String name, String className) {
-        this.id = getId(name, className);
+        this.id = buildId(name, className);
         this.name = name;
         this.className = className;
         allAssignments.put(id, this);
@@ -42,7 +42,11 @@ public class Assignment {
         Assignment.allAssignments = allAssignments;
     }
 
-    public static String getId(String className, String name) {
+    public static String buildId(String className, String name) {
         return className + name;
+    }
+
+    public String getId() {
+        return id;
     }
 }

@@ -45,7 +45,23 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProfessorAssignmentsViewHolder holder, int position) {
-        holder.assignmentNameText.setText(assignments[position]);
+        holder.assignmentNameText.setText(Assignment.getAssignmentById(assignments[position]).getName());
+
+        holder.changeAssignmentName.setOnClickListener(view -> {
+            holder.assignmentNameText.setEnabled(!holder.assignmentNameText.isEnabled());
+            if (holder.assignmentNameText.isEnabled()) {
+                holder.changeAssignmentName.setImageResource(R.drawable.ic_baseline_done_24);
+            } else {
+                holder.changeAssignmentName.setImageResource(R.drawable.ic_baseline_edit_24);
+                String name = holder.assignmentNameText.getText().toString();
+                Assignment.getAssignmentById(assignments[position]).setName(name);
+            }
+        });
+
+        holder.studentAnswers.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersFragment.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -57,7 +73,6 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
         protected EditText assignmentNameText;
         protected FloatingActionButton changeAssignmentName;
         protected Button studentAnswers;
-        protected String nameBeforeChange;
 
         @SuppressLint("SetTextI18n")
         public ProfessorAssignmentsViewHolder(@NonNull View itemView) {
@@ -66,23 +81,6 @@ public class ProfessorAssignmentsAdapter extends RecyclerView.Adapter<ProfessorA
             assignmentNameText = itemView.findViewById(R.id.assignmentNameID);
             changeAssignmentName = itemView.findViewById(R.id.changeNameID);
             studentAnswers = itemView.findViewById(R.id.assignmentAnswersID);
-
-            changeAssignmentName.setOnClickListener(view -> {
-                assignmentNameText.setEnabled(!assignmentNameText.isEnabled());
-                if (assignmentNameText.isEnabled()) {
-                    nameBeforeChange = assignmentNameText.getText().toString();
-                    changeAssignmentName.setImageResource(R.drawable.ic_baseline_done_24);
-                } else {
-                    changeAssignmentName.setImageResource(R.drawable.ic_baseline_edit_24);
-                    String name = assignmentNameText.getText().toString();
-                    Objects.requireNonNull(Assignment.getAssignmentById(nameBeforeChange)).setName(name);
-                }
-            });
-
-            studentAnswers.setOnClickListener(view -> {
-                Intent intent = new Intent(ProfessorAssignmentsAdapter.context, AnswersFragment.class);
-                context.startActivity(intent);
-            });
         }
     }
 }

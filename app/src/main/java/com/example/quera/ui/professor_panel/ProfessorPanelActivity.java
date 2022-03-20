@@ -35,8 +35,6 @@ public class ProfessorPanelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor_panel);
 
-        professor = new Professor("username", "12345678", "amir", "amiri", "sharif");
-
         nameTextView = findViewById(R.id.usernameProfessorPanelTextView);
         classesTextView = findViewById(R.id.professorClassesTextView);
         createClassButton = findViewById(R.id.createClass);

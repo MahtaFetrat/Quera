@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quera.BaseActivity;
 import com.example.quera.R;
 import com.example.quera.model.Answer;
 import com.example.quera.model.Assignment;
@@ -14,7 +15,7 @@ import com.example.quera.model.Course;
 
 import java.util.ArrayList;
 
-public class StudentAssignmentsFragment extends AppCompatActivity {
+public class StudentAssignmentsFragment extends BaseActivity {
     protected Course enteredClass;
     protected ArrayList<Assignment> classAssignments;
     protected ArrayList<Answer> answers;

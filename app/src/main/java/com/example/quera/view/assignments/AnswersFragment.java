@@ -7,13 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quera.BaseActivity;
 import com.example.quera.R;
 import com.example.quera.model.Answer;
 import com.example.quera.model.Assignment;
 
 import java.util.ArrayList;
 
-public class AnswersFragment extends AppCompatActivity {
+public class AnswersFragment extends BaseActivity {
     protected Assignment enteredAssignment;
     protected ArrayList<Answer> classAnswer;
     protected ArrayList<String> answers;
