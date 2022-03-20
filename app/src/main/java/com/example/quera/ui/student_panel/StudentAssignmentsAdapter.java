@@ -1,4 +1,4 @@
-package com.example.quera.view.assignments;
+package com.example.quera.ui.student_panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,7 +20,7 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
     protected Float[] grades;
     protected Context context;
 
-    public StudentAssignmentsAdapter(StudentAssignmentsFragment ct, Object[] assignmentNames, Object[] studentAnswers, Object[] studentGrades) {
+    public StudentAssignmentsAdapter(StudentClassActivity ct, Object[] assignmentNames, Object[] studentAnswers, Object[] studentGrades) {
         context = ct;
         assignments = (String[]) assignmentNames;
         answers = (String[]) studentAnswers;
@@ -76,7 +76,6 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
                 } else {
                     answerButton.setText("Change");
                     String ans = studentAnswerText.getText().toString();
-                    Student.getLoggedStudent().getAnswerByAssignment(assignmentNameText.getText().toString()).setAnswer(ans);
                 }
             });
         }

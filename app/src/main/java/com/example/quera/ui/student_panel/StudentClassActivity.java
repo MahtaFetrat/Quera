@@ -1,63 +1,59 @@
 package com.example.quera.ui.student_panel;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quera.BaseActivity;
 import com.example.quera.controller.ClassController;
 import com.example.quera.MainActivity;
 import com.example.quera.R;
+import com.example.quera.controller.StudentPanelController;
+import com.example.quera.model.Answer;
+import com.example.quera.model.Assignment;
 import com.example.quera.model.Course;
-import com.example.quera.model.Student;
+
+import java.util.ArrayList;
 
 public class StudentClassActivity extends BaseActivity {
-    ClassController controller = MainActivity.classController;
+    StudentPanelController studentController = MainActivity.studentPanelController;
+    ClassController classController = MainActivity.classController;
 
-    Student student;
-    Course clas;
-    TextView classNameTextView;
-    TextView professorNameTextView;
-    TextView assignmentsTextView;
-    EditText assignmentEditText;
-    Button confirmButton;
-    TextView messageTextView;
+    protected Course course;
+    protected ArrayList<Assignment> classAssignments;
+    protected ArrayList<Answer> answers;
+    protected ArrayList<String> assignmentsName, studentAnswers = new ArrayList<>();
+    protected ArrayList<Float> studentGrades = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_class);
 
-        classNameTextView = findViewById(R.id.classNameStudentClassTextView);
-        professorNameTextView = findViewById(R.id.professorNameStudentClassTextView);
-        assignmentsTextView = findViewById(R.id.studentClassAssignmentsTextView);
-        confirmButton = findViewById(R.id.studentEnterAssignmentConfirm);
-        assignmentEditText = findViewById(R.id.assignmentNameStudentClass);
-        messageTextView = findViewById(R.id.studentClassMessage);
+        setContentView(R.layout.fragment_student_assignments);
+
+        RecyclerView recyclerView = findViewById(R.id.assignmentList);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String className = intent.getStringExtra("className");
-
-        this.student = MainActivity.studentPanelController.getStudentByUsername(username);
-        this.clas = controller.getUserClassByName(student, className);
-        classNameTextView.setText(className);
-        professorNameTextView.setText(clas.getProfessor().getName());
-        assignmentsTextView.setText(controller.getClassAssignments(this.clas));
-
-        confirmButton.setOnClickListener(view -> {
-            if (controller.getClassAssignmentByName(clas, assignmentEditText.getText().toString()) == null) {
-                messageTextView.setTextColor(Color.RED);
+        course = classController.getClassByName(intent.getStringExtra("className"));
+        classAssignments = course.getAssignments();
+        assignmentsName = course.getAssignmentIds();
+        answers = studentController.getStudentByUsername(intent.getStringExtra("username")).getAnswers();
+        int i = 0;
+        for (Assignment assignment : classAssignments) {
+            if (answers.size() > 0 && answers.get(i).getAssignment().equals(assignment)) {
+                studentAnswers.add(answers.get(i).getAnswer());
+                studentGrades.add(answers.get(i).getGrade());
+                i++;
             } else {
-                /* TODO go to assignment page
-                Intent intent = new Intent(...)
-                ...
-                 */
+                studentAnswers.add("");
+                studentGrades.add(0f);
             }
-        });
+        }
+
+        StudentAssignmentsAdapter studentAssignmentsAdapter = new StudentAssignmentsAdapter(this, assignmentsName.toArray(new String[0]), studentAnswers.toArray(new String[0]), studentGrades.toArray(new Float[0]));
+        recyclerView.setAdapter(studentAssignmentsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
