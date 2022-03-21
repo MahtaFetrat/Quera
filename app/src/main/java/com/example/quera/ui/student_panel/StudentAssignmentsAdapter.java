@@ -2,6 +2,8 @@ package com.example.quera.ui.student_panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +55,22 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
             holder.studentAnswerText.setText(answer.getAnswer());
             holder.studentGradeText.setText(String.valueOf(answer.getGrade()));
             holder.answerButton.setText("Change");
+            holder.answerButton.setEnabled(false);
         }
+
+        holder.studentAnswerText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String answerText = (answer == null ? "" : answer.getAnswer());
+                holder.answerButton.setEnabled(!holder.studentAnswerText.getText().toString().equals(answerText));
+            }
+        });
 
         holder.answerButton.setOnClickListener(view -> {
             String studentAnswer = holder.studentAnswerText.getText().toString();

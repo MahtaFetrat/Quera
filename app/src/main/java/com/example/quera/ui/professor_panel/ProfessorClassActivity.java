@@ -62,6 +62,7 @@ public class ProfessorClassActivity extends BaseActivity {
         inputAssignmentName.setMessage("Enter Assignment title");
 
         final EditText nameInputField = new EditText(this);
+        nameInputField.setSingleLine();
         inputAssignmentName.setView(nameInputField);
 
         inputAssignmentName.setPositiveButton("Create", (dialog, whichButton) -> {
