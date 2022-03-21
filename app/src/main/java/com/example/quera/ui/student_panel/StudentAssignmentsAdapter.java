@@ -79,6 +79,7 @@ public class StudentAssignmentsAdapter extends RecyclerView.Adapter<StudentAssig
             } else {
                 answer.setAnswer(studentAnswer);
             }
+            holder.studentAnswerText.clearFocus();
             notifyItemChanged(position);
         });
     }

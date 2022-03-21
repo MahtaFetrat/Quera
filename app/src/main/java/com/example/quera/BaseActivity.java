@@ -36,18 +36,15 @@ public class BaseActivity extends AppCompatActivity {
             alert.setTitle("Logout");
             alert.setMessage("Are you sure you want to logout?");
 
-            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    DataController.logout();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
+            alert.setPositiveButton("Yes", (dialog, whichButton) -> {
+                DataController.logout();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                writeData();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             });
 
-            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                }
+            alert.setNegativeButton("Cancel", (dialog, whichButton) -> {
             });
 
             alert.show();

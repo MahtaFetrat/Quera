@@ -56,7 +56,7 @@ public class Assignment {
 
     public Answer getStudentAnswer(String username) {
         for (Answer answer : getAnswers()) {
-            if (answer.studentId == username) {
+            if (answer.studentId.equals(username)) {
                 return answer;
             }
         }
