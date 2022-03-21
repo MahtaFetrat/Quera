@@ -2,6 +2,8 @@ package com.example.quera.view.assignments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,18 +39,31 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.AnswersV
     @Override
     public void onBindViewHolder(@NonNull AnswersViewHolder holder, int position) {
         holder.answerText.setText(answers[position].getAnswer());
-        holder.gradeText.setText(String.valueOf(answers[position].getGrade()));
+        String grade = String.valueOf(answers[position].getGrade());
+        holder.gradeText.setText(grade);
         holder.studentNameText.setText(answers[position].getStudent().getFullName());
 
-        holder.gradeButton.setOnClickListener(view -> {
-            holder.gradeText.setEnabled(!holder.gradeText.isEnabled());
-            if (holder.gradeText.isEnabled()) {
-                holder.gradeButton.setText("OK");
-            } else {
-                holder.gradeButton.setText("Grade");
-                float grade = Float.parseFloat(holder.gradeText.getText().toString());
-                answers[position].setGrade(grade);
+        holder.gradeText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!grade.equals(holder.gradeText.getText().toString())) {
+                    holder.gradeButton.setEnabled(true);
+                }
             }
+        });
+
+        holder.gradeButton.setOnClickListener(view -> {
+            holder.gradeButton.setText("Grade");
+            float newGrade = Float.parseFloat(holder.gradeText.getText().toString());
+            answers[position].setGrade(newGrade);
+            holder.gradeButton.setEnabled(false);
+            holder.gradeText.clearFocus();
         });
     }
 

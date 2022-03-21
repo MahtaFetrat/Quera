@@ -40,8 +40,9 @@ public class BaseActivity extends AppCompatActivity {
                 DataController.logout();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 writeData();
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                this.finish();
             });
 
             alert.setNegativeButton("Cancel", (dialog, whichButton) -> {
