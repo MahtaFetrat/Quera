@@ -51,6 +51,8 @@ public class ProfessorPanelActivity extends BaseActivity {
             Course c = controller.getProfessorClassByName(professor, classNameEditText.getText().toString());
             if (c == null) {
                 messageTextView.setTextColor(Color.RED);
+            } else if (!professor.getClassNames().contains(c.getName())) {
+                classNameEditText.setError(getString(R.string.not_the_class_owner));
             } else {
                 Intent intent = new Intent(ProfessorPanelActivity.this, ProfessorClassActivity.class);
                 intent.putExtra("username", professor.getUsername());

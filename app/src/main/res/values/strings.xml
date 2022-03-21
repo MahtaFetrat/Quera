@@ -64,4 +64,6 @@
     <string name="class_name">"Class Title: "</string>
     <string name="write_answer">Write your answer...</string>
     <string name="saved_answers_key">saved_answers_key</string>
+    <string name="not_a_member_of_the_class">You are not a memeber of this class</string>
+    <string name="not_the_class_owner">You don\'t own this class</string>
 </resources>

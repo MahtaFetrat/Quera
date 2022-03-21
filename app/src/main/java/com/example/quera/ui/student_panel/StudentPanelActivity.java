@@ -45,6 +45,8 @@ public class StudentPanelActivity extends BaseActivity {
             Course c;
             if ((c = controller.getStudentClassByName(student, classNameEditText.getText().toString())) == null) {
                 messageTextView.setTextColor(Color.RED);
+            } else if (!student.getClassNames().contains(c.getName())) {
+                classNameEditText.setError(getString(R.string.not_a_member_of_the_class));
             } else {
                 Intent intent = new Intent(StudentPanelActivity.this, StudentClassActivity.class);
                 intent.putExtra("username", student.getUsername());
