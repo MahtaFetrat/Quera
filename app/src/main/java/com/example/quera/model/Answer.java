@@ -16,6 +16,7 @@ public class Answer {
         this.assignmentId = assignment.getId();
         this.answer = answer;
         allAnswers.put(id, this);
+        assignment.addAnswer(this);
     }
 
     public static Answer getAnswerById(String answerId) {
