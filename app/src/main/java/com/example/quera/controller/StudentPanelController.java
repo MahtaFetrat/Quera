@@ -1,7 +1,5 @@
 package com.example.quera.controller;
 
-import com.example.quera.model.Answer;
-import com.example.quera.model.Assignment;
 import com.example.quera.model.Student;
 import com.example.quera.model.Course;
 
@@ -20,9 +18,6 @@ public class StudentPanelController {
 
     public void addStudentToClass(Student student, Course c){
         student.addStudentToClass(c.getName());
-        for (String assignmentId : c.getAssignmentIds()) {
-            new Answer(student, Assignment.getAssignmentById(assignmentId), "");
-        }
     }
 
     public Student getStudentByUsername(String username) {
